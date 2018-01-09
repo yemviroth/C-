@@ -20,6 +20,9 @@ namespace WindowsFormsApplication1
         public static bool update;
         public static MySqlDataReader dr;
         public static string id;
+        public static string cateName;
+
+
 
     }
 }

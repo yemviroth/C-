@@ -30,7 +30,42 @@ namespace WindowsFormsApplication1
         {
             showCate();
             showProduct();
-          
+            reOrderProduct();
+            reOrderProduct();
+        }
+
+        private void reOrderProduct()
+        {
+            try
+            {
+                cl.cnn.Open();
+                cl.sql = "Select * from tblproduct Where itemInstock <= itemReorderLevel ";
+                cl.da = new MySqlDataAdapter(cl.sql, cl.cnn);
+                DataTable dt = new DataTable();
+                cl.da.Fill(dt);
+                dgvReOrder.DataSource = dt;
+                dgvReOrder.Columns[0].Visible = false;
+                this.dgvReOrder.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                var dgv = dgvReOrder;
+                {
+                    dgv.Columns[1].HeaderText = "កូដទំនិញ";
+                    dgv.Columns[2].HeaderText = "ឈ្មោះទំនិញ";
+                    dgv.Columns[3].HeaderText = "ឈ្មោះប្រភេទទំនិញ";
+                    dgv.Columns[4].HeaderText = "តំលៃទិញចូល";
+                    dgv.Columns[5].HeaderText = "តំលៃលក់";
+                    dgv.Columns[6].HeaderText = "ថ្ងៃទិញចូល";
+                    dgv.Columns[7].HeaderText = "ចំនួនក្នុងស្តុក";
+                    dgv.Columns[8].HeaderText = "ទំនិញគិតជា";
+                    dgv.Columns[9].HeaderText = "Reorder level";
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            cl.cnn.Close();
+            
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
@@ -188,6 +223,53 @@ namespace WindowsFormsApplication1
             Class1.update = false;
             frmProduct pro = new frmProduct();
             pro.ShowDialog();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            Class1.add = false;
+            Class1.update = true;
+            frmProduct pro = new frmProduct();
+            pro.ShowDialog();
+        }
+
+        private void dgvProduct_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                //gets a collection that contains all the rows
+                DataGridViewRow row = this.dgvProduct.Rows[e.RowIndex];
+                Class1.id = row.Cells[1].Value.ToString();
+
+
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cl.cnn.Open();
+                 DialogResult result = MessageBox.Show("Do you want to Delete Product?", "Warning",MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    cl.sql = "Delete From tblproduct Where itemCode = @id";
+                    cl.cmd = new MySqlCommand(cl.sql,cl.cnn);
+                    cl.cmd.Parameters.AddWithValue("@id", Class1.id);
+                    int i = cl.cmd.ExecuteNonQuery();
+                    if (i > 0)
+                    {
+                        MessageBox.Show("Product Delete Success!");
+                        showProduct();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            cl.cnn.Close();
         }
 
     }
