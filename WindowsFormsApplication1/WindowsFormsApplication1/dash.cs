@@ -12,7 +12,8 @@ using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApplication1
 {
-    public partial class dash : MetroFramework.Forms.MetroForm
+   public partial class dash : MetroFramework.Forms.MetroForm
+    //public partial class dash : Form
     {
         public Class1 cl = new Class1();
         public dash()
@@ -240,6 +241,7 @@ namespace WindowsFormsApplication1
                 //gets a collection that contains all the rows
                 DataGridViewRow row = this.dgvProduct.Rows[e.RowIndex];
                 Class1.id = row.Cells[1].Value.ToString();
+                
 
 
             }

@@ -155,5 +155,11 @@ namespace WindowsFormsApplication1
             txtAge.Text = "";
             txtName.Focus();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            dash frm = new dash();
+            frm.Show();
+        }
     }
 }

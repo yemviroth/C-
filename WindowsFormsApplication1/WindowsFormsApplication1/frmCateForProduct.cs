@@ -64,6 +64,8 @@ namespace WindowsFormsApplication1
                 string id = row.Cells[1].Value.ToString();
                 this.frmAddpro.CategoryID = id;
                 this.frmAddpro.Category = row.Cells[2].Value.ToString();
+
+               // cl.cmd = new MySqlCommand("Select ");
                 this.Close();
 
 

@@ -70,7 +70,7 @@ namespace WindowsFormsApplication1
                 cl.cmd.Parameters.AddWithValue("@itemCategory" , txtProductCate.Text);
                 cl.cmd.Parameters.AddWithValue("@itemPriceIn" , txtPriceIn.Text);
                 cl.cmd.Parameters.AddWithValue("@itemPriceOut" , txtPriceSell.Text);
-                cl.cmd.Parameters.AddWithValue("@itemStockInDate" , dtpIn.Value);
+                cl.cmd.Parameters.AddWithValue("@itemStockInDate", dtpIn.Value.ToString("dd-MMM-yyyy"));
                 cl.cmd.Parameters.AddWithValue("@itemInStock" , txtProductInStock.Text);
                 cl.cmd.Parameters.AddWithValue("@itemKetjea" , txtUnit.Text);
                 cl.cmd.Parameters.AddWithValue("@itemReorderLevel" , txtReorderLevel.Text);
@@ -110,7 +110,7 @@ namespace WindowsFormsApplication1
                 cl.cmd.Parameters.AddWithValue("@itemCategory", txtProductCate.Text);
                 cl.cmd.Parameters.AddWithValue("@itemPriceIn", txtPriceIn.Text);
                 cl.cmd.Parameters.AddWithValue("@itemPriceOut", txtPriceSell.Text);
-                cl.cmd.Parameters.AddWithValue("@itemStockInDate", dtpIn.Value);
+                cl.cmd.Parameters.AddWithValue("@itemStockInDate", dtpIn.Value.ToString("dd-MMM-yyyy"));
                 cl.cmd.Parameters.AddWithValue("@itemInStock", txtProductInStock.Text);
                 cl.cmd.Parameters.AddWithValue("@itemKetjea", txtUnit.Text);
                 cl.cmd.Parameters.AddWithValue("@itemReorderLevel", txtReorderLevel.Text);
@@ -143,13 +143,18 @@ namespace WindowsFormsApplication1
 
         private void frmProduct_Load(object sender, EventArgs e)
         {
+
+            dtpIn.Format = DateTimePickerFormat.Custom;
+            dtpIn.CustomFormat = "dd-MMM-yyyy";
             cl.cnn.Open();
             if (Class1.add == true)
             {
+                btnNew.Visible = true;
                 lblTitle.Text = "បន្ថែមទំនិញ";
             }
             else
             {
+                btnNew.Visible = false;
                 lblTitle.Text = "កែប្រែទំនិញ";
                 loadProductForUpdate();
             }
@@ -204,6 +209,12 @@ namespace WindowsFormsApplication1
         {
             get { return categoryID; }
             set { categoryID = value; }
+        }
+
+        public string proCode
+        {
+            get { return txtProducCode.Text; }
+            set { txtProducCode.Text = value; }
         }
 
         //public string caa

@@ -37,6 +37,8 @@ namespace WindowsFormsApplication1
             this.BringToFront();
             this.Activate();
             this.TopMost = true;
+            txtUser.Text = "admin";
+            txtPwd.Text = "admin";
 
 
         }
