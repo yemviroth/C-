@@ -46,7 +46,7 @@ namespace WindowsFormsApplication1
           
         }
 
-        private void dgvCate_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        public void dgvCate_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -54,32 +54,68 @@ namespace WindowsFormsApplication1
                 //frmProduct pro = new frmProduct();
                 DataGridViewRow row = this.dgvCate.Rows[e.RowIndex];
 
-
-                //Class1.cateName = row.Cells[2].Value.ToString();
-                ////pro.caa = cateName;
-
-                //pro.txtProductCate.Text = Class1.cateName;
-                //// this.Close();
-                //MessageBox.Show(Class1.cateName);
                 string id = row.Cells[1].Value.ToString();
                 this.frmAddpro.CategoryID = id;
                 this.frmAddpro.Category = row.Cells[2].Value.ToString();
 
-               // cl.cmd = new MySqlCommand("Select ");
+                //MessageBox.Show(id + "," + this.frmAddpro.Category);
+
+                try
+                {
+                    cl.cnn.Open();
+                    MySqlCommand cmd = new MySqlCommand("Select * From tblproduct Where cateID = @cateID Order By itemCode DESC Limit 1", cl.cnn);
+
+                    cmd.Parameters.AddWithValue("@cateID", id);
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    DataTable dtch = new DataTable();
+                    da.Fill(dtch);
+                    if (dtch.Rows.Count == 0)
+                    {
+                        this.frmAddpro.proCode = id + "-0001";
+                    }
+                    else
+                    {
+                        Class1.dr = cmd.ExecuteReader();
+                        while (Class1.dr.Read())
+                        {
+                            string itemCode = Class1.dr.GetString(1);
+                            //this.frmAddpro.proCode = itemCode;
+                            if (Class1.update == true)
+                            {
+                                if  (itemCode != Class1.id )
+                                {
+                                    String cut = itemCode.Substring(itemCode.Length - 3);
+                                    int cutPlus = Convert.ToInt32(cut) + 1;
+                                    this.frmAddpro.proCode = id + "-" + cutPlus.ToString("0000");
+                                }
+                                else
+                                {
+                                    this.frmAddpro.proCode = Class1.id;
+                                }
+                                
+                            }
+                            else
+                            {
+                                String cut = itemCode.Substring(itemCode.Length - 3);
+                                int cutPlus = Convert.ToInt32(cut) + 1;
+                                this.frmAddpro.proCode = id + "-" + cutPlus.ToString("0000");
+                            }
+
+                            
+                        }
+                       
+                        
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+                }
+                cl.cnn.Close();
                 this.Close();
-
-
-
-
             }
-
-            //frmProduct pro = new frmProduct();
-            //string dg = this.dgvCate.SelectedRows[1].Cells[0].Value.ToString();
-            //pro.txtProductCate.Text = this.dgvCate.SelectedRows[1].Cells[0].Value.ToString();
-            //MessageBox.Show(dg);
-
-
-            
         }
+      
     }
 }

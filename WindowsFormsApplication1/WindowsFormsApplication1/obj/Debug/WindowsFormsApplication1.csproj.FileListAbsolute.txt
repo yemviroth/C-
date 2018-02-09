@@ -30,4 +30,5 @@ D:\My Document\Project_\POS C#\C-\WindowsFormsApplication1\WindowsFormsApplicati
 D:\My Document\Project_\POS C#\C-\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
 D:\My Document\Project_\POS C#\C-\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 D:\My Document\Project_\POS C#\C-\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+D:\My Document\Project_\POS C#\C-\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.frmStockIn.resources
 D:\My Document\Project_\POS C#\C-\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache

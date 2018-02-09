@@ -61,7 +61,7 @@ namespace WindowsFormsApplication1
         {
             try
             {
-
+                
                 cl.sql = @"Insert Into tblproduct (itemCode,itemName,itemCategory,itemPriceIn,itemPriceOut,itemStockInDate,itemInStock,itemKetjea,itemReorderLevel,cateID)" +
                       " Values (@itemCode, @itemName, @itemCategory, @itemPriceIn, @itemPriceOut, @itemStockInDate, @itemInStock, @itemKetjea, @itemReorderLevel, @cateID)";
                 cl.cmd = new MySqlCommand(cl.sql, cl.cnn);
@@ -74,7 +74,7 @@ namespace WindowsFormsApplication1
                 cl.cmd.Parameters.AddWithValue("@itemInStock" , txtProductInStock.Text);
                 cl.cmd.Parameters.AddWithValue("@itemKetjea" , txtUnit.Text);
                 cl.cmd.Parameters.AddWithValue("@itemReorderLevel" , txtReorderLevel.Text);
-                cl.cmd.Parameters.AddWithValue("@cateID", categoryID);
+                cl.cmd.Parameters.AddWithValue("@cateID", txtCateID.Text);
 
 
                 int i = cl.cmd.ExecuteNonQuery();
@@ -115,7 +115,7 @@ namespace WindowsFormsApplication1
                 cl.cmd.Parameters.AddWithValue("@itemKetjea", txtUnit.Text);
                 cl.cmd.Parameters.AddWithValue("@itemReorderLevel", txtReorderLevel.Text);
                 cl.cmd.Parameters.AddWithValue("@id", Class1.id);
-                cl.cmd.Parameters.AddWithValue("@cateID", categoryID);
+                cl.cmd.Parameters.AddWithValue("@cateID", txtCateID.Text);
                 int i = cl.cmd.ExecuteNonQuery();
                 if (i > 0)
                 {
@@ -154,6 +154,7 @@ namespace WindowsFormsApplication1
             }
             else
             {
+                
                 btnNew.Visible = false;
                 lblTitle.Text = "កែប្រែទំនិញ";
                 loadProductForUpdate();
@@ -164,25 +165,35 @@ namespace WindowsFormsApplication1
 
         private void loadProductForUpdate()
         {
-            
-            cl.sql = "Select * from tblproduct Where itemCode = @id";
-            cl.cmd = new MySqlCommand(cl.sql, cl.cnn);
-            cl.cmd.Parameters.AddWithValue("@id", Class1.id);
-            Class1.dr = cl.cmd.ExecuteReader();
-            while (Class1.dr.Read())
+            try
+            {
+                cl.sql = "Select * from tblproduct Where itemCode = @id";
+                cl.cmd = new MySqlCommand(cl.sql, cl.cnn);
+                cl.cmd.Parameters.AddWithValue("@id", Class1.id);
+                Class1.dr = cl.cmd.ExecuteReader();
+                while (Class1.dr.Read())
+                {
+
+                    txtProducCode.Text = Class1.dr.GetString(1);
+                    txtProductName.Text = Class1.dr.GetString(2);
+                    txtProductCate.Text = Class1.dr.GetString(3);
+                    txtPriceIn.Text = Class1.dr.GetString(4);
+                    txtPriceSell.Text = Class1.dr.GetString(5);
+                    // dtpIn.Value = Class1.dr.GetValue(6);
+                    txtProductInStock.Text = Class1.dr.GetString(7);
+                    txtUnit.Text = Class1.dr.GetString(8);
+                    txtReorderLevel.Text = Class1.dr.GetString(9);
+                    txtCateID.Text = Class1.dr.GetString(10);
+
+                }
+            }
+            catch (Exception ex)
             {
 
-                txtProducCode.Text = Class1.dr.GetString(1);
-                txtProductName.Text = Class1.dr.GetString(2);
-                txtProductCate.Text = Class1.dr.GetString(3);
-                txtPriceIn.Text = Class1.dr.GetString(4);
-                txtPriceSell.Text = Class1.dr.GetString(5);
-               // dtpIn.Value = Class1.dr.GetValue(6);
-                txtProductInStock.Text = Class1.dr.GetString(7);
-                txtUnit.Text = Class1.dr.GetString(8);
-                txtReorderLevel.Text = Class1.dr.GetString(9);
-
+                MessageBox.Show(ex.Message);
             }
+            
+         
            
 
         }
@@ -196,6 +207,7 @@ namespace WindowsFormsApplication1
         {
             frmCateForProduct cate = new frmCateForProduct(this);
             cate.ShowDialog();
+            
         }
 
 
@@ -207,8 +219,8 @@ namespace WindowsFormsApplication1
 
         public String CategoryID
         {
-            get { return categoryID; }
-            set { categoryID = value; }
+            get { return txtCateID.Text; }
+            set { txtCateID.Text = value; }
         }
 
         public string proCode

@@ -29,10 +29,10 @@ namespace WindowsFormsApplication1
 
         private void dash_Load(object sender, EventArgs e)
         {
-            showCate();
-            showProduct();
-            reOrderProduct();
-            reOrderProduct();
+            //showCate();
+            //showProduct();
+            //reOrderProduct();
+            
         }
 
         private void reOrderProduct()
@@ -174,7 +174,7 @@ namespace WindowsFormsApplication1
                 //gets a collection that contains all the rows
                 DataGridViewRow row = this.dgvCate.Rows[e.RowIndex];
                 Class1.id = row.Cells[1].Value.ToString();
-               
+                //Class1.cateID = row.Cells[10].Value.ToString();
 
             }
         }
@@ -272,6 +272,63 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.Message);
             }
             cl.cnn.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmStockIn stockIn = new frmStockIn();
+            stockIn.ShowDialog();
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            switch ((sender as TabControl).SelectedIndex)
+            {
+                case 0:
+                    reOrderProduct();
+                    break;
+                case 1:
+                    showCate();
+                    break;
+                case 2:
+                    showProduct();
+                    this.dgvProduct.Columns[4].DefaultCellStyle.Format = "c";
+                    this.dgvProduct.Columns[5].DefaultCellStyle.Format = "c";
+                    break;
+            }
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cl.cnn.Open();
+                int d;
+                for (d = 0; d <= 900; d++)
+                {
+                    cl.cmd = new MySqlCommand("Insert Into tblproduct (itemCode) Values(@d)", cl.cnn);
+                    cl.cmd.Parameters.AddWithValue("@d", d);
+                    cl.cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            cl.cnn.Close();
+           
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

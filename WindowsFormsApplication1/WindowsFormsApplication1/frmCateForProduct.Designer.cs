@@ -78,10 +78,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(464, 309);
+            this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvCate);
             this.Name = "frmCateForProduct";
-            this.ShadowType = MetroFramework.Forms.MetroForm.MetroFormShadowType.DropShadow;
             this.Load += new System.EventHandler(this.frmCateForProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCate)).EndInit();
             this.ResumeLayout(false);

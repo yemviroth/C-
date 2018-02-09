@@ -51,6 +51,12 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.txtReorderLevel = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtCateID = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -66,17 +72,17 @@
             // 
             // txtProducCode
             // 
-            this.txtProducCode.Location = new System.Drawing.Point(186, 156);
+            this.txtProducCode.Location = new System.Drawing.Point(199, 144);
             this.txtProducCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtProducCode.Name = "txtProducCode";
-            this.txtProducCode.Size = new System.Drawing.Size(202, 27);
+            this.txtProducCode.Size = new System.Drawing.Size(412, 27);
             this.txtProducCode.TabIndex = 15;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(105, 156);
+            this.label2.Location = new System.Drawing.Point(118, 144);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 25);
             this.label2.TabIndex = 16;
@@ -86,7 +92,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(90, 195);
+            this.label3.Location = new System.Drawing.Point(103, 180);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 25);
             this.label3.TabIndex = 18;
@@ -94,17 +100,17 @@
             // 
             // txtProductName
             // 
-            this.txtProductName.Location = new System.Drawing.Point(186, 195);
+            this.txtProductName.Location = new System.Drawing.Point(199, 180);
             this.txtProductName.Margin = new System.Windows.Forms.Padding(4);
             this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(412, 27);
+            this.txtProductName.Size = new System.Drawing.Size(366, 27);
             this.txtProductName.TabIndex = 17;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(85, 234);
+            this.label4.Location = new System.Drawing.Point(97, 108);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(79, 25);
             this.label4.TabIndex = 20;
@@ -112,17 +118,17 @@
             // 
             // txtProductCate
             // 
-            this.txtProductCate.Location = new System.Drawing.Point(186, 234);
+            this.txtProductCate.Location = new System.Drawing.Point(198, 108);
             this.txtProductCate.Margin = new System.Windows.Forms.Padding(4);
             this.txtProductCate.Name = "txtProductCate";
-            this.txtProductCate.Size = new System.Drawing.Size(202, 27);
+            this.txtProductCate.Size = new System.Drawing.Size(150, 27);
             this.txtProductCate.TabIndex = 19;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(82, 273);
+            this.label5.Location = new System.Drawing.Point(95, 215);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(97, 25);
             this.label5.TabIndex = 22;
@@ -130,17 +136,18 @@
             // 
             // txtPriceIn
             // 
-            this.txtPriceIn.Location = new System.Drawing.Point(186, 273);
+            this.txtPriceIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPriceIn.Location = new System.Drawing.Point(199, 215);
             this.txtPriceIn.Margin = new System.Windows.Forms.Padding(4);
             this.txtPriceIn.Name = "txtPriceIn";
-            this.txtPriceIn.Size = new System.Drawing.Size(202, 27);
+            this.txtPriceIn.Size = new System.Drawing.Size(366, 26);
             this.txtPriceIn.TabIndex = 21;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(106, 312);
+            this.label6.Location = new System.Drawing.Point(119, 254);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(73, 25);
             this.label6.TabIndex = 24;
@@ -148,17 +155,18 @@
             // 
             // txtPriceSell
             // 
-            this.txtPriceSell.Location = new System.Drawing.Point(186, 312);
+            this.txtPriceSell.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPriceSell.Location = new System.Drawing.Point(199, 254);
             this.txtPriceSell.Margin = new System.Windows.Forms.Padding(4);
             this.txtPriceSell.Name = "txtPriceSell";
-            this.txtPriceSell.Size = new System.Drawing.Size(202, 27);
+            this.txtPriceSell.Size = new System.Drawing.Size(412, 26);
             this.txtPriceSell.TabIndex = 23;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(85, 351);
+            this.label7.Location = new System.Drawing.Point(98, 293);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(93, 25);
             this.label7.TabIndex = 26;
@@ -168,7 +176,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(81, 390);
+            this.label8.Location = new System.Drawing.Point(94, 332);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(98, 25);
             this.label8.TabIndex = 28;
@@ -176,17 +184,18 @@
             // 
             // txtProductInStock
             // 
-            this.txtProductInStock.Location = new System.Drawing.Point(186, 390);
+            this.txtProductInStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductInStock.Location = new System.Drawing.Point(199, 332);
             this.txtProductInStock.Margin = new System.Windows.Forms.Padding(4);
             this.txtProductInStock.Name = "txtProductInStock";
-            this.txtProductInStock.Size = new System.Drawing.Size(202, 27);
+            this.txtProductInStock.Size = new System.Drawing.Size(149, 26);
             this.txtProductInStock.TabIndex = 27;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
-            this.label9.Location = new System.Drawing.Point(404, 391);
+            this.label9.Location = new System.Drawing.Point(369, 330);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(88, 25);
             this.label9.TabIndex = 30;
@@ -194,7 +203,7 @@
             // 
             // txtUnit
             // 
-            this.txtUnit.Location = new System.Drawing.Point(509, 391);
+            this.txtUnit.Location = new System.Drawing.Point(474, 330);
             this.txtUnit.Margin = new System.Windows.Forms.Padding(4);
             this.txtUnit.Name = "txtUnit";
             this.txtUnit.Size = new System.Drawing.Size(137, 27);
@@ -202,15 +211,17 @@
             // 
             // dtpIn
             // 
-            this.dtpIn.Location = new System.Drawing.Point(186, 347);
+            this.dtpIn.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpIn.Location = new System.Drawing.Point(199, 289);
             this.dtpIn.Name = "dtpIn";
-            this.dtpIn.Size = new System.Drawing.Size(200, 27);
+            this.dtpIn.Size = new System.Drawing.Size(412, 23);
             this.dtpIn.TabIndex = 31;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Khmer OS Battambang", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(395, 234);
+            this.button1.Location = new System.Drawing.Point(355, 108);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(46, 27);
             this.button1.TabIndex = 32;
@@ -220,7 +231,7 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(52, 92);
+            this.btnNew.Location = new System.Drawing.Point(439, 15);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(92, 35);
             this.btnNew.TabIndex = 33;
@@ -230,7 +241,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(150, 92);
+            this.btnSave.Location = new System.Drawing.Point(537, 15);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(92, 35);
             this.btnSave.TabIndex = 34;
@@ -240,7 +251,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(248, 91);
+            this.btnClose.Location = new System.Drawing.Point(635, 14);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(92, 35);
             this.btnClose.TabIndex = 35;
@@ -252,7 +263,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
-            this.label10.Location = new System.Drawing.Point(47, 425);
+            this.label10.Location = new System.Drawing.Point(60, 367);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(130, 25);
             this.label10.TabIndex = 37;
@@ -260,22 +271,74 @@
             // 
             // txtReorderLevel
             // 
-            this.txtReorderLevel.Location = new System.Drawing.Point(186, 425);
+            this.txtReorderLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtReorderLevel.Location = new System.Drawing.Point(199, 367);
             this.txtReorderLevel.Margin = new System.Windows.Forms.Padding(4);
             this.txtReorderLevel.Name = "txtReorderLevel";
-            this.txtReorderLevel.Size = new System.Drawing.Size(202, 27);
+            this.txtReorderLevel.Size = new System.Drawing.Size(149, 26);
             this.txtReorderLevel.TabIndex = 36;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.panel1.Controls.Add(this.btnClose);
+            this.panel1.Controls.Add(this.btnNew);
+            this.panel1.Controls.Add(this.btnSave);
+            this.panel1.Location = new System.Drawing.Point(-1, 430);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(741, 67);
+            this.panel1.TabIndex = 39;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(416, 111);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 25);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "កូដក្រុមទំនិញ :";
+            // 
+            // txtCateID
+            // 
+            this.txtCateID.Location = new System.Drawing.Point(522, 109);
+            this.txtCateID.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCateID.Name = "txtCateID";
+            this.txtCateID.Size = new System.Drawing.Size(89, 27);
+            this.txtCateID.TabIndex = 41;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
+            this.label11.Location = new System.Drawing.Point(575, 180);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(36, 25);
+            this.label11.TabIndex = 43;
+            this.label11.Text = "($)";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
+            this.label12.Location = new System.Drawing.Point(575, 216);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(36, 25);
+            this.label12.TabIndex = 44;
+            this.label12.Text = "($)";
             // 
             // frmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(740, 497);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtCateID);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtReorderLevel);
-            this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnNew);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dtpIn);
             this.Controls.Add(this.label9);
@@ -299,6 +362,7 @@
             this.Name = "frmProduct";
             this.Padding = new System.Windows.Forms.Padding(27, 88, 27, 29);
             this.Load += new System.EventHandler(this.frmProduct_Load);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -329,5 +393,10 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtReorderLevel;
         public System.Windows.Forms.TextBox txtProductCate;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtCateID;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
     }
 }

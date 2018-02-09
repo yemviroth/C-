@@ -41,12 +41,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(400, 118);
+            this.button1.Location = new System.Drawing.Point(346, 118);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(65, 34);
             this.button1.TabIndex = 0;
@@ -76,7 +77,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(583, 285);
+            this.dataGridView1.Size = new System.Drawing.Size(385, 285);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -91,7 +92,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(471, 117);
+            this.button2.Location = new System.Drawing.Point(417, 117);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(64, 35);
             this.button2.TabIndex = 5;
@@ -103,7 +104,7 @@
             // 
             this.button3.BackColor = System.Drawing.Color.Maroon;
             this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(541, 118);
+            this.button3.Location = new System.Drawing.Point(383, 78);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(65, 34);
             this.button3.TabIndex = 6;
@@ -149,7 +150,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(329, 118);
+            this.button4.Location = new System.Drawing.Point(275, 118);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(65, 34);
             this.button4.TabIndex = 11;
@@ -159,7 +160,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(366, 78);
+            this.button5.Location = new System.Drawing.Point(312, 78);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(65, 34);
             this.button5.TabIndex = 12;
@@ -167,11 +168,22 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // crystalReportViewer1
+            // 
+            this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer1.Location = new System.Drawing.Point(505, 41);
+            this.crystalReportViewer1.Name = "crystalReportViewer1";
+            this.crystalReportViewer1.Size = new System.Drawing.Size(811, 442);
+            this.crystalReportViewer1.TabIndex = 13;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 471);
+            this.ClientSize = new System.Drawing.Size(1328, 495);
+            this.Controls.Add(this.crystalReportViewer1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label4);
@@ -209,6 +221,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
     }
 }
 

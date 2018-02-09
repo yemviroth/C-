@@ -108,7 +108,7 @@ namespace WindowsFormsApplication1
 
         private void checkCate(string tbl)
         {
-
+            
             cl.sql = "Select * From "+tbl+" Where cateID = @cateCode";
             cl.cmd = new MySqlCommand(cl.sql,cl.cnn);
             cl.cmd.Parameters.AddWithValue("@cateCode", txtCateCode.Text);
@@ -117,19 +117,21 @@ namespace WindowsFormsApplication1
             if (Class1.dr.Read() == true)
             {
                 MessageBox.Show("Category Code Already Exist.");
-
+                
             }
+               
             else
             {
+                Class1.dr.Close();
                 addCate();
             }
-
+           
             
         }
 
         private void frmCategory_Load(object sender, EventArgs e)
         {
-            btnSave.Font = new System.Drawing.Font(this.Font, btnSave.Font.Style);
+           
             try
             {
                 cl.cnn.Open();
@@ -145,6 +147,7 @@ namespace WindowsFormsApplication1
                         txtCateName.Text = Class1.dr["cateName"].ToString();
                         
                     }
+                    Class1.dr.Close();
                 }
             }
             catch (Exception ex)
