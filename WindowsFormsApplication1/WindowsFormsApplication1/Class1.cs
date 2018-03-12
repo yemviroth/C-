@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,8 +23,18 @@ namespace WindowsFormsApplication1
         public static string id;
         public static string cateID;
         public static string codeItem;
+        public void openConn()
+        {
+            if (cnn.State == ConnectionState.Open)
+            {
+                cnn.Close();
 
-        
+            }
+            else
+            {
+                cnn.Open();
+            }
+        }
 
 
 

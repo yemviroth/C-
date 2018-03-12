@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 
+
 namespace WindowsFormsApplication1
 {
    public partial class dash : MetroFramework.Forms.MetroForm
@@ -331,5 +332,81 @@ namespace WindowsFormsApplication1
 
         }
 
+        private void tabPage4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                loadInvoiceNo();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void loadInvoiceNo()
+        {
+            cl.openConn();
+            cl.cmd = new MySqlCommand("Select * from tblsaledetail Order by saleId Desc Limit 1", cl.cnn);
+            cl.da = new MySqlDataAdapter(cl.cmd);
+            cl.cmd.Parameters.AddWithValue(txtInvoiceNo.Text ,"@invoiceNo");
+            DataTable dt = new DataTable();
+            cl.da.Fill(dt);
+            if (dt.Rows.Count == 0)
+            {
+                txtInvoiceNo.Text = "000000001";
+            }
+            else
+            {
+                Class1.dr = cl.cmd.ExecuteReader();
+                while (Class1.dr.Read())
+                {
+                    string inno = Class1.dr.GetString(1);
+                    int innoplus = Convert.ToInt32(inno) + 1;
+                    txtInvoiceNo.Text = innoplus.ToString("00000000");
+                }
+            }
+
+            cl.cnn.Close();
+            
+
+        }
+
+        private void loadSaleitem()
+        {
+            cl.openConn();
+            cl.sql = "Select * from tblsaledetail where invoiceNo = 00000006";
+            cl.cmd = new MySqlCommand(cl.sql,cl.cnn);
+            cl.da = new MySqlDataAdapter(cl.cmd);
+            //cl.cmd.Parameters.AddWithValue(txtInvoiceNo.Text, "@invoiceNo");
+            DataTable dt = new DataTable();
+            cl.da.Fill(dt);
+            dgvSale.DataSource = dt;
+            
+        }
+
+        private void txtInvoiceNo_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                loadSaleitem();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            cl.cnn.Close();
+        }
+
+       
     }
+
+    
 }
