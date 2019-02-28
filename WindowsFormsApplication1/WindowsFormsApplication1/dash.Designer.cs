@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
-            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
+            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
             this.metroTabPage5 = new MetroFramework.Controls.MetroTabPage();
             this.label2 = new System.Windows.Forms.Label();
@@ -56,32 +56,41 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.pProductInfo = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtItemPrice = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtItemCategory = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtItemName = new System.Windows.Forms.TextBox();
+            this.txtRecieveReil = new System.Windows.Forms.TextBox();
+            this.txtGrandTotalDollar = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtGrandTotalRiel = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtRecieveDollar = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
+            this.btnNewSale = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSale = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.dgvSale = new System.Windows.Forms.DataGridView();
+            this.button4 = new System.Windows.Forms.Button();
+            this.btnPrintInvoice = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtInvoiceNo = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtProducCode = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtInvoiceNo = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtQuantity = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dgvSale = new System.Windows.Forms.DataGridView();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.button6 = new System.Windows.Forms.Button();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.pProductCash = new System.Windows.Forms.Panel();
             this.metroTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
@@ -91,9 +100,11 @@
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSale)).BeginInit();
+            this.pProductInfo.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSale)).BeginInit();
+            this.tabPage5.SuspendLayout();
+            this.pProductCash.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroTabControl1
@@ -102,14 +113,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroTabControl1.Controls.Add(this.metroTabPage1);
-            this.metroTabControl1.Controls.Add(this.metroTabPage3);
             this.metroTabControl1.Controls.Add(this.metroTabPage2);
+            this.metroTabControl1.Controls.Add(this.metroTabPage3);
             this.metroTabControl1.Controls.Add(this.metroTabPage4);
             this.metroTabControl1.Controls.Add(this.metroTabPage5);
             this.metroTabControl1.Location = new System.Drawing.Point(390, 11);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 2;
-            this.metroTabControl1.Size = new System.Drawing.Size(442, 46);
+            this.metroTabControl1.Size = new System.Drawing.Size(439, 46);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Red;
             this.metroTabControl1.TabIndex = 0;
             // 
@@ -119,39 +130,39 @@
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
             this.metroTabPage1.Location = new System.Drawing.Point(4, 35);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(434, 7);
+            this.metroTabPage1.Size = new System.Drawing.Size(431, 7);
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "Reorder level";
             this.metroTabPage1.VerticalScrollbarBarColor = true;
-            // 
-            // metroTabPage2
-            // 
-            this.metroTabPage2.HorizontalScrollbarBarColor = true;
-            this.metroTabPage2.Location = new System.Drawing.Point(4, 35);
-            this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(434, 7);
-            this.metroTabPage2.TabIndex = 1;
-            this.metroTabPage2.Text = "Products";
-            this.metroTabPage2.VerticalScrollbarBarColor = true;
             // 
             // metroTabPage3
             // 
             this.metroTabPage3.HorizontalScrollbarBarColor = true;
             this.metroTabPage3.Location = new System.Drawing.Point(4, 35);
             this.metroTabPage3.Name = "metroTabPage3";
-            this.metroTabPage3.Size = new System.Drawing.Size(434, 7);
+            this.metroTabPage3.Size = new System.Drawing.Size(431, 7);
             this.metroTabPage3.TabIndex = 2;
             this.metroTabPage3.Text = "Category";
             this.metroTabPage3.VerticalScrollbarBarColor = true;
             this.metroTabPage3.Click += new System.EventHandler(this.metroTabPage3_Click);
             this.metroTabPage3.Leave += new System.EventHandler(this.metroTabPage3_Leave);
             // 
+            // metroTabPage2
+            // 
+            this.metroTabPage2.HorizontalScrollbarBarColor = true;
+            this.metroTabPage2.Location = new System.Drawing.Point(4, 35);
+            this.metroTabPage2.Name = "metroTabPage2";
+            this.metroTabPage2.Size = new System.Drawing.Size(431, 7);
+            this.metroTabPage2.TabIndex = 1;
+            this.metroTabPage2.Text = "Products";
+            this.metroTabPage2.VerticalScrollbarBarColor = true;
+            // 
             // metroTabPage4
             // 
             this.metroTabPage4.HorizontalScrollbarBarColor = true;
             this.metroTabPage4.Location = new System.Drawing.Point(4, 35);
             this.metroTabPage4.Name = "metroTabPage4";
-            this.metroTabPage4.Size = new System.Drawing.Size(434, 7);
+            this.metroTabPage4.Size = new System.Drawing.Size(431, 7);
             this.metroTabPage4.TabIndex = 3;
             this.metroTabPage4.Text = "Report";
             this.metroTabPage4.VerticalScrollbarBarColor = true;
@@ -161,7 +172,7 @@
             this.metroTabPage5.HorizontalScrollbarBarColor = true;
             this.metroTabPage5.Location = new System.Drawing.Point(4, 35);
             this.metroTabPage5.Name = "metroTabPage5";
-            this.metroTabPage5.Size = new System.Drawing.Size(434, 7);
+            this.metroTabPage5.Size = new System.Drawing.Size(431, 7);
             this.metroTabPage5.TabIndex = 4;
             this.metroTabPage5.Text = "Transaction";
             this.metroTabPage5.VerticalScrollbarBarColor = true;
@@ -174,7 +185,7 @@
             this.label2.Location = new System.Drawing.Point(7, 11);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(140, 34);
+            this.label2.Size = new System.Drawing.Size(142, 34);
             this.label2.TabIndex = 19;
             this.label2.Text = "បញ្ជីក្រុមទំនិញ ៖";
             // 
@@ -225,20 +236,20 @@
             this.dgvProduct.AllowUserToAddRows = false;
             this.dgvProduct.AllowUserToDeleteRows = false;
             this.dgvProduct.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvProduct.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvProduct.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
             this.dgvProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvProduct.BackgroundColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Khmer OS Battambang", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Khmer OS Battambang", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProduct.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvProduct.Location = new System.Drawing.Point(6, 49);
@@ -257,7 +268,7 @@
             this.label1.Location = new System.Drawing.Point(7, 5);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(166, 34);
+            this.label1.Size = new System.Drawing.Size(167, 34);
             this.label1.TabIndex = 16;
             this.label1.Text = "បញ្ជីរាយមុខទំនិញ ៖";
             // 
@@ -309,7 +320,7 @@
             this.tabControl1.Location = new System.Drawing.Point(6, 78);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1002, 496);
+            this.tabControl1.Size = new System.Drawing.Size(999, 496);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 1;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
@@ -321,7 +332,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 31);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(994, 461);
+            this.tabPage1.Size = new System.Drawing.Size(991, 461);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "ទំនិញត្រូវកម្មង់ថែម";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -334,7 +345,7 @@
             this.lblTitle.Location = new System.Drawing.Point(5, 10);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(300, 34);
+            this.lblTitle.Size = new System.Drawing.Size(305, 34);
             this.lblTitle.TabIndex = 17;
             this.lblTitle.Text = "បញ្ជីរាយមុខទំនិញដែលត្រូវកម្មង់ថែម ៖";
             // 
@@ -361,7 +372,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 31);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(994, 461);
+            this.tabPage2.Size = new System.Drawing.Size(991, 461);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "ក្រុមទំនិញ";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -377,7 +388,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 31);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(994, 461);
+            this.tabPage3.Size = new System.Drawing.Size(991, 461);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "ទំនិញ";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -395,10 +406,11 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.panel2);
+            this.tabPage4.Controls.Add(this.pProductCash);
+            this.tabPage4.Controls.Add(this.pProductInfo);
             this.tabPage4.Controls.Add(this.label11);
             this.tabPage4.Controls.Add(this.txtQuantity);
-            this.tabPage4.Controls.Add(this.button2);
+            this.tabPage4.Controls.Add(this.btnNewSale);
             this.tabPage4.Controls.Add(this.panel1);
             this.tabPage4.Controls.Add(this.label6);
             this.tabPage4.Controls.Add(this.txtInvoiceNo);
@@ -411,118 +423,266 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 31);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(994, 461);
+            this.tabPage4.Size = new System.Drawing.Size(991, 461);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "ប្រតិបត្តិការណ៍";
             this.tabPage4.UseVisualStyleBackColor = true;
             this.tabPage4.Click += new System.EventHandler(this.tabPage4_Click);
             // 
-            // tabPage5
+            // pProductInfo
             // 
-            this.tabPage5.Location = new System.Drawing.Point(4, 31);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(994, 461);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "របាយការណ៍";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            this.pProductInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pProductInfo.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pProductInfo.Controls.Add(this.label14);
+            this.pProductInfo.Controls.Add(this.txtItemPrice);
+            this.pProductInfo.Controls.Add(this.label13);
+            this.pProductInfo.Controls.Add(this.txtItemCategory);
+            this.pProductInfo.Controls.Add(this.label12);
+            this.pProductInfo.Controls.Add(this.txtItemName);
+            this.pProductInfo.Location = new System.Drawing.Point(6, 224);
+            this.pProductInfo.Name = "pProductInfo";
+            this.pProductInfo.Size = new System.Drawing.Size(432, 145);
+            this.pProductInfo.TabIndex = 44;
             // 
-            // tabPage6
+            // label14
             // 
-            this.tabPage6.Location = new System.Drawing.Point(4, 31);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(994, 461);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "បុគ្គលិគ";
-            this.tabPage6.UseVisualStyleBackColor = true;
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
+            this.label14.Location = new System.Drawing.Point(240, 76);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(49, 25);
+            this.label14.TabIndex = 49;
+            this.label14.Text = "តំលៃ :";
             // 
-            // button2
+            // txtItemPrice
             // 
-            this.button2.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(111, 6);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(92, 42);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "លក់ថ្មី";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.txtItemPrice.Location = new System.Drawing.Point(295, 70);
+            this.txtItemPrice.Name = "txtItemPrice";
+            this.txtItemPrice.Size = new System.Drawing.Size(116, 30);
+            this.txtItemPrice.TabIndex = 48;
             // 
-            // button3
+            // label13
             // 
-            this.button3.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(101, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(92, 42);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "ថែមស្តុក";
-            this.button3.UseVisualStyleBackColor = true;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
+            this.label13.Location = new System.Drawing.Point(31, 75);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(79, 25);
+            this.label13.TabIndex = 47;
+            this.label13.Text = "ក្រុមទំនិញ :";
+            // 
+            // txtItemCategory
+            // 
+            this.txtItemCategory.Location = new System.Drawing.Point(110, 71);
+            this.txtItemCategory.Name = "txtItemCategory";
+            this.txtItemCategory.Size = new System.Drawing.Size(116, 30);
+            this.txtItemCategory.TabIndex = 46;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
+            this.label12.Location = new System.Drawing.Point(21, 39);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(89, 25);
+            this.label12.TabIndex = 45;
+            this.label12.Text = "ឈ្មោះទំនិញ :";
+            // 
+            // txtItemName
+            // 
+            this.txtItemName.Location = new System.Drawing.Point(110, 34);
+            this.txtItemName.Name = "txtItemName";
+            this.txtItemName.Size = new System.Drawing.Size(302, 30);
+            this.txtItemName.TabIndex = 42;
+            // 
+            // txtRecieveReil
+            // 
+            this.txtRecieveReil.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRecieveReil.Location = new System.Drawing.Point(247, 107);
+            this.txtRecieveReil.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRecieveReil.Name = "txtRecieveReil";
+            this.txtRecieveReil.Size = new System.Drawing.Size(251, 26);
+            this.txtRecieveReil.TabIndex = 40;
+            this.txtRecieveReil.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRecieveReil_KeyPress);
+            // 
+            // txtGrandTotalDollar
+            // 
+            this.txtGrandTotalDollar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGrandTotalDollar.Location = new System.Drawing.Point(247, 19);
+            this.txtGrandTotalDollar.Margin = new System.Windows.Forms.Padding(4);
+            this.txtGrandTotalDollar.Name = "txtGrandTotalDollar";
+            this.txtGrandTotalDollar.Size = new System.Drawing.Size(251, 26);
+            this.txtGrandTotalDollar.TabIndex = 34;
+            this.txtGrandTotalDollar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGrandTotalDollar_KeyPress);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
+            this.label8.Location = new System.Drawing.Point(115, 19);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(120, 25);
+            this.label8.TabIndex = 35;
+            this.label8.Text = "តំលៃជាដុល្លា ($) :";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
+            this.label7.Location = new System.Drawing.Point(89, 107);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(151, 25);
+            this.label7.TabIndex = 41;
+            this.label7.Text = "ប្រាក់ទទួលជារៀល (៛) :";
+            // 
+            // txtGrandTotalRiel
+            // 
+            this.txtGrandTotalRiel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGrandTotalRiel.Location = new System.Drawing.Point(247, 48);
+            this.txtGrandTotalRiel.Margin = new System.Windows.Forms.Padding(4);
+            this.txtGrandTotalRiel.Name = "txtGrandTotalRiel";
+            this.txtGrandTotalRiel.Size = new System.Drawing.Size(251, 26);
+            this.txtGrandTotalRiel.TabIndex = 36;
+            this.txtGrandTotalRiel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGrandTotalRiel_KeyPress);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
+            this.label9.Location = new System.Drawing.Point(123, 48);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(117, 25);
+            this.label9.TabIndex = 37;
+            this.label9.Text = "តំលៃជារៀល (៛) :";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
+            this.label10.Location = new System.Drawing.Point(115, 78);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(125, 25);
+            this.label10.TabIndex = 39;
+            this.label10.Text = "ប្រាក់ទទួលជា ($) :";
+            // 
+            // txtRecieveDollar
+            // 
+            this.txtRecieveDollar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRecieveDollar.Location = new System.Drawing.Point(247, 78);
+            this.txtRecieveDollar.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRecieveDollar.Name = "txtRecieveDollar";
+            this.txtRecieveDollar.Size = new System.Drawing.Size(251, 26);
+            this.txtRecieveDollar.TabIndex = 38;
+            this.txtRecieveDollar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRecieveDollar_KeyPress);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
+            this.label11.Location = new System.Drawing.Point(451, 26);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(50, 25);
+            this.label11.TabIndex = 43;
+            this.label11.Text = "ចំនួន :";
+            // 
+            // txtQuantity
+            // 
+            this.txtQuantity.Location = new System.Drawing.Point(456, 55);
+            this.txtQuantity.Margin = new System.Windows.Forms.Padding(4);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(106, 30);
+            this.txtQuantity.TabIndex = 42;
+            // 
+            // btnNewSale
+            // 
+            this.btnNewSale.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewSale.Location = new System.Drawing.Point(128, 43);
+            this.btnNewSale.Name = "btnNewSale";
+            this.btnNewSale.Size = new System.Drawing.Size(92, 42);
+            this.btnNewSale.TabIndex = 19;
+            this.btnNewSale.Text = "លក់ថ្មី";
+            this.btnNewSale.UseVisualStyleBackColor = true;
+            this.btnNewSale.Click += new System.EventHandler(this.btnNewSale_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.btnSale);
+            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.btnPrintInvoice);
+            this.panel1.Location = new System.Drawing.Point(6, 375);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(973, 80);
+            this.panel1.TabIndex = 31;
+            // 
+            // btnSale
+            // 
+            this.btnSale.Location = new System.Drawing.Point(23, 22);
+            this.btnSale.Name = "btnSale";
+            this.btnSale.Size = new System.Drawing.Size(75, 40);
+            this.btnSale.TabIndex = 45;
+            this.btnSale.Text = "លក់";
+            this.btnSale.UseVisualStyleBackColor = true;
+            this.btnSale.Click += new System.EventHandler(this.btnSale_Click);
+            // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(196, 22);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(92, 42);
+            this.button5.TabIndex = 20;
+            this.button5.Text = "Print ម្តងទៀត";
+            this.button5.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(286, 3);
+            this.button4.Location = new System.Drawing.Point(289, 22);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(92, 42);
             this.button4.TabIndex = 21;
             this.button4.Text = "លុប";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // btnPrintInvoice
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Khmer OS Battambang", 14F);
-            this.label3.Location = new System.Drawing.Point(7, 8);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(108, 34);
-            this.label3.TabIndex = 22;
-            this.label3.Text = "លក់ទំនិញ ៖";
+            this.btnPrintInvoice.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrintInvoice.Location = new System.Drawing.Point(104, 22);
+            this.btnPrintInvoice.Name = "btnPrintInvoice";
+            this.btnPrintInvoice.Size = new System.Drawing.Size(92, 42);
+            this.btnPrintInvoice.TabIndex = 24;
+            this.btnPrintInvoice.Text = "រួចរាល់ / Print";
+            this.btnPrintInvoice.UseVisualStyleBackColor = true;
+            this.btnPrintInvoice.Click += new System.EventHandler(this.btnPrintInvoice_Click);
             // 
-            // button5
+            // label6
             // 
-            this.button5.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(193, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(92, 42);
-            this.button5.TabIndex = 20;
-            this.button5.Text = "កែប្រែ";
-            this.button5.UseVisualStyleBackColor = true;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
+            this.label6.Location = new System.Drawing.Point(781, 24);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(103, 25);
+            this.label6.TabIndex = 30;
+            this.label6.Text = "លេខវិក័យបត្រ :";
             // 
-            // dgvSale
+            // txtInvoiceNo
             // 
-            this.dgvSale.AllowUserToAddRows = false;
-            this.dgvSale.AllowUserToDeleteRows = false;
-            this.dgvSale.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvSale.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvSale.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvSale.BackgroundColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Khmer OS Battambang", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSale.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvSale.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSale.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvSale.Location = new System.Drawing.Point(6, 94);
-            this.dgvSale.MultiSelect = false;
-            this.dgvSale.Name = "dgvSale";
-            this.dgvSale.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSale.Size = new System.Drawing.Size(973, 162);
-            this.dgvSale.TabIndex = 23;
+            this.txtInvoiceNo.Location = new System.Drawing.Point(786, 55);
+            this.txtInvoiceNo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtInvoiceNo.Name = "txtInvoiceNo";
+            this.txtInvoiceNo.Size = new System.Drawing.Size(140, 30);
+            this.txtInvoiceNo.TabIndex = 29;
+            this.txtInvoiceNo.TextChanged += new System.EventHandler(this.txtInvoiceNo_TextChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(518, 60);
+            this.label4.Location = new System.Drawing.Point(594, 24);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 25);
             this.label4.TabIndex = 28;
@@ -530,7 +690,7 @@
             // 
             // txtCustomerName
             // 
-            this.txtCustomerName.Location = new System.Drawing.Point(595, 57);
+            this.txtCustomerName.Location = new System.Drawing.Point(599, 55);
             this.txtCustomerName.Margin = new System.Windows.Forms.Padding(4);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(148, 30);
@@ -540,7 +700,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(30, 55);
+            this.label5.Location = new System.Drawing.Point(261, 26);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(74, 25);
             this.label5.TabIndex = 26;
@@ -548,159 +708,109 @@
             // 
             // txtProducCode
             // 
-            this.txtProducCode.Location = new System.Drawing.Point(111, 55);
+            this.txtProducCode.Location = new System.Drawing.Point(266, 55);
             this.txtProducCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtProducCode.Name = "txtProducCode";
-            this.txtProducCode.Size = new System.Drawing.Size(169, 30);
+            this.txtProducCode.Size = new System.Drawing.Size(156, 30);
             this.txtProducCode.TabIndex = 25;
+            this.txtProducCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProducCode_KeyDown);
+            this.txtProducCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProducCode_KeyPress);
             // 
-            // label6
+            // label3
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(758, 62);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(103, 25);
-            this.label6.TabIndex = 30;
-            this.label6.Text = "លេខវិក័យបត្រ :";
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Khmer OS Battambang", 14F);
+            this.label3.Location = new System.Drawing.Point(12, 45);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(109, 34);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "លក់ទំនិញ ៖";
             // 
-            // txtInvoiceNo
+            // dgvSale
             // 
-            this.txtInvoiceNo.Location = new System.Drawing.Point(868, 57);
-            this.txtInvoiceNo.Margin = new System.Windows.Forms.Padding(4);
-            this.txtInvoiceNo.Name = "txtInvoiceNo";
-            this.txtInvoiceNo.Size = new System.Drawing.Size(111, 30);
-            this.txtInvoiceNo.TabIndex = 29;
-            this.txtInvoiceNo.TextChanged += new System.EventHandler(this.txtInvoiceNo_TextChanged);
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvSale.AllowUserToAddRows = false;
+            this.dgvSale.AllowUserToDeleteRows = false;
+            this.dgvSale.AllowUserToResizeRows = false;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvSale.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle23;
+            this.dgvSale.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Location = new System.Drawing.Point(15, 407);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(972, 48);
-            this.panel1.TabIndex = 31;
+            this.dgvSale.BackgroundColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Khmer OS Battambang", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSale.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            this.dgvSale.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSale.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvSale.Location = new System.Drawing.Point(6, 104);
+            this.dgvSale.MultiSelect = false;
+            this.dgvSale.Name = "dgvSale";
+            this.dgvSale.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSale.Size = new System.Drawing.Size(970, 114);
+            this.dgvSale.TabIndex = 23;
+            this.dgvSale.ColumnAdded += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvSale_ColumnAdded);
             // 
-            // label8
+            // tabPage5
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(574, 10);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(120, 25);
-            this.label8.TabIndex = 35;
-            this.label8.Text = "តំលៃជាដុល្លា ($) :";
+            this.tabPage5.Controls.Add(this.button6);
+            this.tabPage5.Location = new System.Drawing.Point(4, 31);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(991, 461);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "របាយការណ៍";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // button6
             // 
-            this.textBox3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(706, 10);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(251, 26);
-            this.textBox3.TabIndex = 34;
+            this.button6.Location = new System.Drawing.Point(118, 79);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 50);
+            this.button6.TabIndex = 0;
+            this.button6.Text = "button6";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // label9
+            // tabPage6
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
-            this.label9.Location = new System.Drawing.Point(582, 39);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(117, 25);
-            this.label9.TabIndex = 37;
-            this.label9.Text = "តំលៃជារៀល (៛) :";
+            this.tabPage6.Location = new System.Drawing.Point(4, 31);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(991, 461);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "បុគ្គលិគ";
+            this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // textBox4
+            // pProductCash
             // 
-            this.textBox4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(706, 39);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(251, 26);
-            this.textBox4.TabIndex = 36;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(548, 98);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(151, 25);
-            this.label7.TabIndex = 41;
-            this.label7.Text = "ប្រាក់ទទួលជារៀល (៛) :";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(706, 98);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(251, 26);
-            this.textBox2.TabIndex = 40;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
-            this.label10.Location = new System.Drawing.Point(574, 69);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(125, 25);
-            this.label10.TabIndex = 39;
-            this.label10.Text = "ប្រាក់ទទួលជា ($) :";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(706, 69);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(251, 26);
-            this.textBox5.TabIndex = 38;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Khmer OS Battambang", 10F, System.Drawing.FontStyle.Bold);
-            this.label11.Location = new System.Drawing.Point(327, 60);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(50, 25);
-            this.label11.TabIndex = 43;
-            this.label11.Text = "ចំនួន :";
-            // 
-            // txtQuantity
-            // 
-            this.txtQuantity.Location = new System.Drawing.Point(384, 55);
-            this.txtQuantity.Margin = new System.Windows.Forms.Padding(4);
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(106, 30);
-            this.txtQuantity.TabIndex = 42;
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.textBox3);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.textBox4);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.textBox5);
-            this.panel2.Location = new System.Drawing.Point(6, 263);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(973, 138);
-            this.panel2.TabIndex = 44;
+            this.pProductCash.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pProductCash.BackColor = System.Drawing.Color.DarkGray;
+            this.pProductCash.Controls.Add(this.txtRecieveDollar);
+            this.pProductCash.Controls.Add(this.label10);
+            this.pProductCash.Controls.Add(this.label9);
+            this.pProductCash.Controls.Add(this.txtGrandTotalRiel);
+            this.pProductCash.Controls.Add(this.label7);
+            this.pProductCash.Controls.Add(this.label8);
+            this.pProductCash.Controls.Add(this.txtGrandTotalDollar);
+            this.pProductCash.Controls.Add(this.txtRecieveReil);
+            this.pProductCash.Location = new System.Drawing.Point(444, 224);
+            this.pProductCash.Name = "pProductCash";
+            this.pProductCash.Size = new System.Drawing.Size(535, 145);
+            this.pProductCash.TabIndex = 45;
             // 
             // dash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1022, 582);
+            this.ClientSize = new System.Drawing.Size(1019, 582);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.metroTabControl1);
             this.Name = "dash";
@@ -723,10 +833,13 @@
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSale)).EndInit();
+            this.pProductInfo.ResumeLayout(false);
+            this.pProductInfo.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSale)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.pProductCash.ResumeLayout(false);
+            this.pProductCash.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -759,8 +872,8 @@
         private System.Windows.Forms.DataGridView dgvReOrder;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnNewSale;
+        private System.Windows.Forms.Button btnPrintInvoice;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button5;
@@ -773,15 +886,24 @@
         private System.Windows.Forms.TextBox txtProducCode;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtRecieveReil;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtRecieveDollar;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtGrandTotalRiel;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtGrandTotalDollar;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtQuantity;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pProductInfo;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtItemCategory;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtItemName;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtItemPrice;
+        private System.Windows.Forms.Button btnSale;
+        private System.Windows.Forms.Panel pProductCash;
     }
 }

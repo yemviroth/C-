@@ -17,7 +17,7 @@ namespace WindowsFormsApplication1
     {
         string categoryID;
         
-        Class1 cl = new Class1();
+        SQLCON cl = new SQLCON();
         public frmStockIn()
         {
             InitializeComponent();
@@ -47,7 +47,7 @@ namespace WindowsFormsApplication1
             
 
             addProduct();
-            cl.cnn.Close();
+            SQLCON.cnn.Close();
         }
 
         private void addProduct()
@@ -55,18 +55,18 @@ namespace WindowsFormsApplication1
             try
             {
 
-                cl.sql = @"Insert Into tblstockin (itemCode,itemName,Quantity,Datein)" +
+                SQLCON.sql = @"Insert Into tblstockin (itemCode,itemName,Quantity,Datein)" +
                       " Values (@itemCode,@itemName,@quantity,DATE_FORMAT(sysdate(),'%d-%b-%Y'))";
-                cl.cmd = new MySqlCommand(cl.sql, cl.cnn);
-                cl.cmd.Parameters.AddWithValue("@itemCode" , txtProducCode.Text);
-                cl.cmd.Parameters.AddWithValue("@itemName" , txtProductName.Text);
+                SQLCON.cmd = new MySqlCommand(SQLCON.sql, SQLCON.cnn);
+                SQLCON.cmd.Parameters.AddWithValue("@itemCode" , txtProducCode.Text);
+                SQLCON.cmd.Parameters.AddWithValue("@itemName" , txtProductName.Text);
                 
-                cl.cmd.Parameters.AddWithValue("@quantity" , txtQuantity.Text);
-               //cl.cmd.Parameters.AddWithValue("@Datein", Now());
+                SQLCON.cmd.Parameters.AddWithValue("@quantity" , txtQuantity.Text);
+               //SQLCON.cmd.Parameters.AddWithValue("@Datein", Now());
                
 
 
-                int i = cl.cmd.ExecuteNonQuery();
+                int i = SQLCON.cmd.ExecuteNonQuery();
                 if (i > 0)
                 {
                     updateProductStock();
@@ -92,16 +92,16 @@ namespace WindowsFormsApplication1
             try
             {
                
-                cl.sql = "Update tblproduct SET itemInstock=@itemInstock Where itemCode= @id";
-                cl.cmd = new MySqlCommand(cl.sql, cl.cnn);
+                SQLCON.sql = "Update tblproduct SET itemInstock=@itemInstock Where itemCode= @id";
+                SQLCON.cmd = new MySqlCommand(SQLCON.sql, SQLCON.cnn);
                
                
-                cl.cmd.Parameters.AddWithValue("@itemInStock", txtAfterAdd.Text);
+                SQLCON.cmd.Parameters.AddWithValue("@itemInStock", txtAfterAdd.Text);
               
                
-                cl.cmd.Parameters.AddWithValue("@id", Class1.id);
-               // cl.cmd.Parameters.AddWithValue("@cateID", categoryID);
-                cl.cmd.ExecuteNonQuery();
+                SQLCON.cmd.Parameters.AddWithValue("@id", SQLCON.id);
+               // SQLCON.cmd.Parameters.AddWithValue("@cateID", categoryID);
+                SQLCON.cmd.ExecuteNonQuery();
               
 
                
@@ -116,7 +116,7 @@ namespace WindowsFormsApplication1
         private void frmProduct_Load(object sender, EventArgs e)
         {
 
-            cl.cnn.Open();
+            SQLCON.cnn.Open();
            
    
                 lblTitle.Text = "កែប្រែតុកស្ទំនិញ";
@@ -127,21 +127,21 @@ namespace WindowsFormsApplication1
 
         private void loadProductForUpdate()
         {
-            if (Class1.id !="")
+            if (SQLCON.id !="")
             {
-                cl.sql = "Select * from tblproduct Where itemCode = @id";
-                cl.cmd = new MySqlCommand(cl.sql, cl.cnn);
-                cl.cmd.Parameters.AddWithValue("@id", Class1.id);
-                Class1.dr = cl.cmd.ExecuteReader();
-                while (Class1.dr.Read())
+                SQLCON.sql = "Select * from tblproduct Where itemCode = @id";
+                SQLCON.cmd = new MySqlCommand(SQLCON.sql, SQLCON.cnn);
+                SQLCON.cmd.Parameters.AddWithValue("@id", SQLCON.id);
+                SQLCON.dr = SQLCON.cmd.ExecuteReader();
+                while (SQLCON.dr.Read())
                 {
 
-                    txtProducCode.Text = Class1.dr.GetString(1);
-                    txtProductName.Text = Class1.dr.GetString(2);
+                    txtProducCode.Text = SQLCON.dr.GetString(1);
+                    txtProductName.Text = SQLCON.dr.GetString(2);
 
-                    txtPriceSell.Text = Class1.dr.GetString(5);
+                    txtPriceSell.Text = SQLCON.dr.GetString(5);
                     // dtpIn.Value = Class1.dr.GetValue(6);
-                    txtProductInStock.Text = Class1.dr.GetString(7);
+                    txtProductInStock.Text = SQLCON.dr.GetString(7);
                     //txtAfterAdd.Text = Class1.dr.GetString(8);
 
 
@@ -152,7 +152,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("Please Select Product to Update");
             }
 
-            Class1.dr.Dispose();
+            SQLCON.dr.Dispose();
            
 
         }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WindowsFormsApplication1.Report {
+namespace WindowsFormsApplication1 {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace WindowsFormsApplication1.Report {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rpt : ReportClass {
+    public class crystal : ReportClass {
         
-        public rpt() {
+        public crystal() {
         }
         
         public override string ResourceName {
             get {
-                return "rpt.rpt";
+                return "crystal.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace WindowsFormsApplication1.Report {
         
         public override string FullResourceName {
             get {
-                return "WindowsFormsApplication1.Report.rpt.rpt";
+                return "WindowsFormsApplication1.crystal.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace WindowsFormsApplication1.Report {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class Cachedrpt : Component, ICachedReport {
+    public class Cachedcrystal : Component, ICachedReport {
         
-        public Cachedrpt() {
+        public Cachedcrystal() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace WindowsFormsApplication1.Report {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rpt rpt = new rpt();
+            crystal rpt = new crystal();
             rpt.Site = this.Site;
             return rpt;
         }

@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1
 {
     public partial class frmCategory : MetroFramework.Forms.MetroForm
     {
-        Class1 cl = new Class1();
+        SQLCON cl = new SQLCON();
         
         public frmCategory()
         {
@@ -30,10 +30,10 @@ namespace WindowsFormsApplication1
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            cl.cnn.Open();
+            SQLCON.cnn.Open();
             
 
-            if (Class1.add == true)
+            if (SQLCON.add == true)
             {
                 //check if not exist then add cate;
                 checkCate("tblcate");
@@ -43,22 +43,22 @@ namespace WindowsFormsApplication1
                 updateCate();
                 
             }
-            cl.cnn.Close();
+            SQLCON.cnn.Close();
 
            
            
         }
         private void addCate()
         {
-            //cl.cnn.Open();
+            //SQLCON.cnn.Open();
             //checkCate("tblcate");
 
             string sql = "Insert Into tblcate (cateID,cateName) Values(@cateCode,@cateName)";
-            //cl.cmd = new MySql.Data.MySqlClient.MySqlCommand(cl.sql, cl.cnn);
-            //cl.cmd.ExecuteNonQuery();
+            //SQLCON.cmd = new MySql.Data.MySqlClient.MySqlCommand(SQLCON.sql, SQLCON.cnn);
+            //SQLCON.cmd.ExecuteNonQuery();
             try
             {
-                MySqlCommand cmd = new MySqlCommand(sql, cl.cnn);
+                MySqlCommand cmd = new MySqlCommand(sql, SQLCON.cnn);
                 cmd.Parameters.AddWithValue("@cateCode", txtCateCode.Text);
                 cmd.Parameters.AddWithValue("@cateName", txtCateName.Text);
                 int i = cmd.ExecuteNonQuery();
@@ -86,12 +86,12 @@ namespace WindowsFormsApplication1
         private void updateCate()
         {
           
-            cl.sql = "Update tblcate Set cateID=@cateCode,cateName=@cateName Where cateID = @id";
-            cl.cmd = new MySqlCommand(cl.sql, cl.cnn);
-            cl.cmd.Parameters.AddWithValue("@cateCode", txtCateCode.Text);
-            cl.cmd.Parameters.AddWithValue("@cateName", txtCateName.Text);
-            cl.cmd.Parameters.AddWithValue("@id", Class1.id);
-            int i = cl.cmd.ExecuteNonQuery();
+            SQLCON.sql = "Update tblcate Set cateID=@cateCode,cateName=@cateName Where cateID = @id";
+            SQLCON.cmd = new MySqlCommand(SQLCON.sql, SQLCON.cnn);
+            SQLCON.cmd.Parameters.AddWithValue("@cateCode", txtCateCode.Text);
+            SQLCON.cmd.Parameters.AddWithValue("@cateName", txtCateName.Text);
+            SQLCON.cmd.Parameters.AddWithValue("@id", SQLCON.id);
+            int i = SQLCON.cmd.ExecuteNonQuery();
             if (i > 0)
             {
                 if (System.Windows.Forms.Application.OpenForms["dash"] != null)
@@ -109,12 +109,12 @@ namespace WindowsFormsApplication1
         private void checkCate(string tbl)
         {
             
-            cl.sql = "Select * From "+tbl+" Where cateID = @cateCode";
-            cl.cmd = new MySqlCommand(cl.sql,cl.cnn);
-            cl.cmd.Parameters.AddWithValue("@cateCode", txtCateCode.Text);
+            SQLCON.sql = "Select * From "+tbl+" Where cateID = @cateCode";
+            SQLCON.cmd = new MySqlCommand(SQLCON.sql,SQLCON.cnn);
+            SQLCON.cmd.Parameters.AddWithValue("@cateCode", txtCateCode.Text);
             
-            Class1.dr = cl.cmd.ExecuteReader();
-            if (Class1.dr.Read() == true)
+            SQLCON.dr = SQLCON.cmd.ExecuteReader();
+            if (SQLCON.dr.Read() == true)
             {
                 MessageBox.Show("Category Code Already Exist.");
                 
@@ -122,7 +122,7 @@ namespace WindowsFormsApplication1
                
             else
             {
-                Class1.dr.Close();
+                SQLCON.dr.Close();
                 addCate();
             }
            
@@ -134,20 +134,20 @@ namespace WindowsFormsApplication1
            
             try
             {
-                cl.cnn.Open();
-                if (Class1.update == true)
+                SQLCON.cnn.Open();
+                if (SQLCON.update == true)
                 {
-                    cl.sql = "Select * from tblcate Where cateID = @id";
-                    cl.cmd = new MySqlCommand(cl.sql, cl.cnn);
-                    cl.cmd.Parameters.AddWithValue("@id", Class1.id);
-                    Class1.dr = cl.cmd.ExecuteReader();
-                    if (Class1.dr.Read() == true)
+                    SQLCON.sql = "Select * from tblcate Where cateID = @id";
+                    SQLCON.cmd = new MySqlCommand(SQLCON.sql, SQLCON.cnn);
+                    SQLCON.cmd.Parameters.AddWithValue("@id", SQLCON.id);
+                    SQLCON.dr = SQLCON.cmd.ExecuteReader();
+                    if (SQLCON.dr.Read() == true)
                     {
-                        txtCateCode.Text = Class1.dr["cateID"].ToString();
-                        txtCateName.Text = Class1.dr["cateName"].ToString();
+                        txtCateCode.Text = SQLCON.dr["cateID"].ToString();
+                        txtCateName.Text = SQLCON.dr["cateName"].ToString();
                         
                     }
-                    Class1.dr.Close();
+                    SQLCON.dr.Close();
                 }
             }
             catch (Exception ex)
@@ -157,8 +157,8 @@ namespace WindowsFormsApplication1
             }
 
            
-            cl.cmd.Dispose();
-            cl.cnn.Close();
+            SQLCON.cmd.Dispose();
+            SQLCON.cnn.Close();
 
         }
         private void cleartext()

@@ -17,7 +17,7 @@ namespace WindowsFormsApplication1
     {
         string categoryID;
         
-        Class1 cl = new Class1();
+        SQLCON cl = new SQLCON();
         public frmProduct()
         {
             InitializeComponent();
@@ -44,8 +44,8 @@ namespace WindowsFormsApplication1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            cl.cnn.Open();
-            if (Class1.add == true) {
+            SQLCON.cnn.Open();
+            if (SQLCON.add == true) {
                  addProduct();
             }
             else
@@ -54,7 +54,7 @@ namespace WindowsFormsApplication1
             }
            
 
-            cl.cnn.Close();
+            SQLCON.cnn.Close();
         }
 
         private void addProduct()
@@ -62,22 +62,22 @@ namespace WindowsFormsApplication1
             try
             {
                 
-                cl.sql = @"Insert Into tblproduct (itemCode,itemName,itemCategory,itemPriceIn,itemPriceOut,itemStockInDate,itemInStock,itemKetjea,itemReorderLevel,cateID)" +
+                SQLCON.sql = @"Insert Into tblproduct (itemCode,itemName,itemCategory,itemPriceIn,itemPriceOut,itemStockInDate,itemInStock,itemKetjea,itemReorderLevel,cateID)" +
                       " Values (@itemCode, @itemName, @itemCategory, @itemPriceIn, @itemPriceOut, @itemStockInDate, @itemInStock, @itemKetjea, @itemReorderLevel, @cateID)";
-                cl.cmd = new MySqlCommand(cl.sql, cl.cnn);
-                cl.cmd.Parameters.AddWithValue("@itemCode" , txtProducCode.Text);
-                cl.cmd.Parameters.AddWithValue("@itemName" , txtProductName.Text);
-                cl.cmd.Parameters.AddWithValue("@itemCategory" , txtProductCate.Text);
-                cl.cmd.Parameters.AddWithValue("@itemPriceIn" , txtPriceIn.Text);
-                cl.cmd.Parameters.AddWithValue("@itemPriceOut" , txtPriceSell.Text);
-                cl.cmd.Parameters.AddWithValue("@itemStockInDate", dtpIn.Value.ToString("dd-MMM-yyyy"));
-                cl.cmd.Parameters.AddWithValue("@itemInStock" , txtProductInStock.Text);
-                cl.cmd.Parameters.AddWithValue("@itemKetjea" , txtUnit.Text);
-                cl.cmd.Parameters.AddWithValue("@itemReorderLevel" , txtReorderLevel.Text);
-                cl.cmd.Parameters.AddWithValue("@cateID", txtCateID.Text);
+                SQLCON.cmd = new MySqlCommand(SQLCON.sql, SQLCON.cnn);
+                SQLCON.cmd.Parameters.AddWithValue("@itemCode" , txtProducCode.Text);
+                SQLCON.cmd.Parameters.AddWithValue("@itemName" , txtProductName.Text);
+                SQLCON.cmd.Parameters.AddWithValue("@itemCategory" , txtProductCate.Text);
+                SQLCON.cmd.Parameters.AddWithValue("@itemPriceIn" , txtPriceIn.Text);
+                SQLCON.cmd.Parameters.AddWithValue("@itemPriceOut" , txtPriceSell.Text);
+                SQLCON.cmd.Parameters.AddWithValue("@itemStockInDate", dtpIn.Value.ToString("dd-MMM-yyyy"));
+                SQLCON.cmd.Parameters.AddWithValue("@itemInStock" , txtProductInStock.Text);
+                SQLCON.cmd.Parameters.AddWithValue("@itemKetjea" , txtUnit.Text);
+                SQLCON.cmd.Parameters.AddWithValue("@itemReorderLevel" , txtReorderLevel.Text);
+                SQLCON.cmd.Parameters.AddWithValue("@cateID", txtCateID.Text);
 
 
-                int i = cl.cmd.ExecuteNonQuery();
+                int i = SQLCON.cmd.ExecuteNonQuery();
                 if (i > 0)
                 {
                     if (System.Windows.Forms.Application.OpenForms["dash"] != null)
@@ -102,21 +102,21 @@ namespace WindowsFormsApplication1
             try
             {
                
-                cl.sql = "Update tblproduct SET itemCode = @itemCode ,itemName = @itemName ,itemCategory = @itemCategory ,itemPriceIn = @itemPriceIn ,itemPriceOut = @itemPriceOut ,itemStockInDate = @itemStockInDate ,itemInStock = @itemInStock ,itemKetjea = @itemKetjea ,itemReorderLevel = @itemReorderLevel"+
+                SQLCON.sql = "Update tblproduct SET itemCode = @itemCode ,itemName = @itemName ,itemCategory = @itemCategory ,itemPriceIn = @itemPriceIn ,itemPriceOut = @itemPriceOut ,itemStockInDate = @itemStockInDate ,itemInStock = @itemInStock ,itemKetjea = @itemKetjea ,itemReorderLevel = @itemReorderLevel"+
                     ", cateID = @cateID Where itemCode= @id";
-                cl.cmd = new MySqlCommand(cl.sql, cl.cnn);
-                cl.cmd.Parameters.AddWithValue("@itemCode", txtProducCode.Text);
-                cl.cmd.Parameters.AddWithValue("@itemName", txtProductName.Text);
-                cl.cmd.Parameters.AddWithValue("@itemCategory", txtProductCate.Text);
-                cl.cmd.Parameters.AddWithValue("@itemPriceIn", txtPriceIn.Text);
-                cl.cmd.Parameters.AddWithValue("@itemPriceOut", txtPriceSell.Text);
-                cl.cmd.Parameters.AddWithValue("@itemStockInDate", dtpIn.Value.ToString("dd-MMM-yyyy"));
-                cl.cmd.Parameters.AddWithValue("@itemInStock", txtProductInStock.Text);
-                cl.cmd.Parameters.AddWithValue("@itemKetjea", txtUnit.Text);
-                cl.cmd.Parameters.AddWithValue("@itemReorderLevel", txtReorderLevel.Text);
-                cl.cmd.Parameters.AddWithValue("@id", Class1.id);
-                cl.cmd.Parameters.AddWithValue("@cateID", txtCateID.Text);
-                int i = cl.cmd.ExecuteNonQuery();
+                SQLCON.cmd = new MySqlCommand(SQLCON.sql, SQLCON.cnn);
+                SQLCON.cmd.Parameters.AddWithValue("@itemCode", txtProducCode.Text);
+                SQLCON.cmd.Parameters.AddWithValue("@itemName", txtProductName.Text);
+                SQLCON.cmd.Parameters.AddWithValue("@itemCategory", txtProductCate.Text);
+                SQLCON.cmd.Parameters.AddWithValue("@itemPriceIn", txtPriceIn.Text);
+                SQLCON.cmd.Parameters.AddWithValue("@itemPriceOut", txtPriceSell.Text);
+                SQLCON.cmd.Parameters.AddWithValue("@itemStockInDate", dtpIn.Value.ToString("dd-MMM-yyyy"));
+                SQLCON.cmd.Parameters.AddWithValue("@itemInStock", txtProductInStock.Text);
+                SQLCON.cmd.Parameters.AddWithValue("@itemKetjea", txtUnit.Text);
+                SQLCON.cmd.Parameters.AddWithValue("@itemReorderLevel", txtReorderLevel.Text);
+                SQLCON.cmd.Parameters.AddWithValue("@id", SQLCON.id);
+                SQLCON.cmd.Parameters.AddWithValue("@cateID", txtCateID.Text);
+                int i = SQLCON.cmd.ExecuteNonQuery();
                 if (i > 0)
                 {
                     if (System.Windows.Forms.Application.OpenForms["dash"] != null)
@@ -146,8 +146,8 @@ namespace WindowsFormsApplication1
 
             dtpIn.Format = DateTimePickerFormat.Custom;
             dtpIn.CustomFormat = "dd-MMM-yyyy";
-            cl.cnn.Open();
-            if (Class1.add == true)
+            SQLCON.cnn.Open();
+            if (SQLCON.add == true)
             {
                 btnNew.Visible = true;
                 lblTitle.Text = "បន្ថែមទំនិញ";
@@ -159,7 +159,7 @@ namespace WindowsFormsApplication1
                 lblTitle.Text = "កែប្រែទំនិញ";
                 loadProductForUpdate();
             }
-            cl.cnn.Close();
+            SQLCON.cnn.Close();
         }
 
 
@@ -167,23 +167,23 @@ namespace WindowsFormsApplication1
         {
             try
             {
-                cl.sql = "Select * from tblproduct Where itemCode = @id";
-                cl.cmd = new MySqlCommand(cl.sql, cl.cnn);
-                cl.cmd.Parameters.AddWithValue("@id", Class1.id);
-                Class1.dr = cl.cmd.ExecuteReader();
-                while (Class1.dr.Read())
+                SQLCON.sql = "Select * from tblproduct Where itemCode = @id";
+                SQLCON.cmd = new MySqlCommand(SQLCON.sql, SQLCON.cnn);
+                SQLCON.cmd.Parameters.AddWithValue("@id", SQLCON.id);
+                SQLCON.dr = SQLCON.cmd.ExecuteReader();
+                while (SQLCON.dr.Read())
                 {
 
-                    txtProducCode.Text = Class1.dr.GetString(1);
-                    txtProductName.Text = Class1.dr.GetString(2);
-                    txtProductCate.Text = Class1.dr.GetString(3);
-                    txtPriceIn.Text = Class1.dr.GetString(4);
-                    txtPriceSell.Text = Class1.dr.GetString(5);
+                    txtProducCode.Text = SQLCON.dr.GetString(1);
+                    txtProductName.Text = SQLCON.dr.GetString(2);
+                    txtProductCate.Text = SQLCON.dr.GetString(3);
+                    txtPriceIn.Text = SQLCON.dr.GetString(4);
+                    txtPriceSell.Text = SQLCON.dr.GetString(5);
                     // dtpIn.Value = Class1.dr.GetValue(6);
-                    txtProductInStock.Text = Class1.dr.GetString(7);
-                    txtUnit.Text = Class1.dr.GetString(8);
-                    txtReorderLevel.Text = Class1.dr.GetString(9);
-                    txtCateID.Text = Class1.dr.GetString(10);
+                    txtProductInStock.Text = SQLCON.dr.GetString(7);
+                    txtUnit.Text = SQLCON.dr.GetString(8);
+                    txtReorderLevel.Text = SQLCON.dr.GetString(9);
+                    txtCateID.Text = SQLCON.dr.GetString(10);
 
                 }
             }

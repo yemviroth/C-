@@ -1,0 +1,4 @@
+id	Number		
+cateID	String	50		
+cateName	String	50	
+cateDesc	String	100	

@@ -15,7 +15,7 @@ namespace WindowsFormsApplication1
 {
     public partial class login : MetroFramework.Forms.MetroForm
     {
-        Class1 cl = new Class1();
+        SQLCON cl = new SQLCON();
        // public MySqlConnection cnn = new MySqlConnection("Server=192.168.0.8;Database=cc;Uid=root;Pwd=123;Encrypt=true;");
         public login()
         {
@@ -47,13 +47,15 @@ namespace WindowsFormsApplication1
         {
             try
             {
-
-                MySqlCommand cmd = new MySqlCommand("Select * from tbluser Where userName=@user And pwd=@pwd", cl.cnn);
+                SQLCON.openConn();
+                //SQLCON.cnn.Open();
+                MySqlCommand cmd = new MySqlCommand("Select * from tbluser Where userName=@user And pwd=@pwd", SQLCON.cnn);
                 cmd.Parameters.AddWithValue("@user", txtUser.Text);
                 cmd.Parameters.AddWithValue("@pwd", txtPwd.Text);
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 DataTable dtlogin = new DataTable();
                 da.Fill(dtlogin);
+                SQLCON.cnn.Close();
                 if (dtlogin.Rows.Count > 0)
                 {
                     //this.Hide();
@@ -68,11 +70,17 @@ namespace WindowsFormsApplication1
                 {
                     MessageBox.Show("Invalid");
                 }
+
             }
+            
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                SQLCON.cnn.Close();
             }
             
         }

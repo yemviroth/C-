@@ -13,7 +13,7 @@ namespace WindowsFormsApplication1
 {
     public partial class frmCateForProduct : MetroFramework.Forms.MetroForm
     {
-        Class1 cl = new Class1();
+        SQLCON cl = new SQLCON();
         private frmProduct frmAddpro = null;
         public frmCateForProduct(Form callingForm)
         {
@@ -30,9 +30,9 @@ namespace WindowsFormsApplication1
         {
 
             string sql1 = "Select * from tblcate";
-            cl.da = new MySqlDataAdapter(sql1, cl.cnn);
+            SQLCON.da = new MySqlDataAdapter(sql1, SQLCON.cnn);
             DataTable dt = new DataTable();
-            cl.da.Fill(dt);
+            SQLCON.da.Fill(dt);
             dgvCate.DataSource = dt;
             dgvCate.Columns[1].HeaderText = "កូដប្រភេទ";
             dgvCate.Columns[2].HeaderText = "ឈ្មោះប្រផេទទំនិញ";
@@ -62,8 +62,8 @@ namespace WindowsFormsApplication1
 
                 try
                 {
-                    cl.cnn.Open();
-                    MySqlCommand cmd = new MySqlCommand("Select * From tblproduct Where cateID = @cateID Order By itemCode DESC Limit 1", cl.cnn);
+                    SQLCON.cnn.Open();
+                    MySqlCommand cmd = new MySqlCommand("Select * From tblproduct Where cateID = @cateID Order By itemCode DESC Limit 1", SQLCON.cnn);
 
                     cmd.Parameters.AddWithValue("@cateID", id);
                     MySqlDataAdapter da = new MySqlDataAdapter(cmd);
@@ -75,14 +75,14 @@ namespace WindowsFormsApplication1
                     }
                     else
                     {
-                        Class1.dr = cmd.ExecuteReader();
-                        while (Class1.dr.Read())
+                        SQLCON.dr = cmd.ExecuteReader();
+                        while (SQLCON.dr.Read())
                         {
-                            string itemCode = Class1.dr.GetString(1);
+                            string itemCode = SQLCON.dr.GetString(1);
                             //this.frmAddpro.proCode = itemCode;
-                            if (Class1.update == true)
+                            if (SQLCON.update == true)
                             {
-                                if  (itemCode != Class1.id )
+                                if  (itemCode != SQLCON.id )
                                 {
                                     String cut = itemCode.Substring(itemCode.Length - 3);
                                     int cutPlus = Convert.ToInt32(cut) + 1;
@@ -90,7 +90,7 @@ namespace WindowsFormsApplication1
                                 }
                                 else
                                 {
-                                    this.frmAddpro.proCode = Class1.id;
+                                    this.frmAddpro.proCode = SQLCON.id;
                                 }
                                 
                             }
@@ -112,7 +112,7 @@ namespace WindowsFormsApplication1
 
                     MessageBox.Show(ex.Message);
                 }
-                cl.cnn.Close();
+                SQLCON.cnn.Close();
                 this.Close();
             }
         }

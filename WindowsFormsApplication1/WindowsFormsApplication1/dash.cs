@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,18 +10,22 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using CrystalDecisions.CrystalReports;
 
 
 namespace WindowsFormsApplication1
 {
    public partial class dash : MetroFramework.Forms.MetroForm
     //public partial class dash : Form
+       
     {
-        public Class1 cl = new Class1();
+        public SQLCON cl = new SQLCON();
+      
         public dash()
         {
+            //SQLCON.openConn();
             InitializeComponent();
-
+            
         }
 
         private void metroTabPage3_Leave(object sender, EventArgs e)
@@ -40,11 +45,11 @@ namespace WindowsFormsApplication1
         {
             try
             {
-                cl.cnn.Open();
-                cl.sql = "Select * from tblproduct Where itemInstock <= itemReorderLevel ";
-                cl.da = new MySqlDataAdapter(cl.sql, cl.cnn);
+                
+                SQLCON.sql = "Select * from tblproduct Where itemInstock <= itemReorderLevel ";
+                SQLCON.da = new MySqlDataAdapter(SQLCON.sql, SQLCON.cnn);
                 DataTable dt = new DataTable();
-                cl.da.Fill(dt);
+                SQLCON.da.Fill(dt);
                 dgvReOrder.DataSource = dt;
                 dgvReOrder.Columns[0].Visible = false;
                 this.dgvReOrder.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -66,14 +71,14 @@ namespace WindowsFormsApplication1
 
                 MessageBox.Show(ex.Message);
             }
-            cl.cnn.Close();
+            
             
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            Class1.add = true;
-            Class1.update = false;
+            SQLCON.add = true;
+            SQLCON.update = false;
             frmCategory frmCate = new frmCategory();
             frmCate.ShowDialog();
         }
@@ -101,10 +106,10 @@ namespace WindowsFormsApplication1
 
         public void showProduct()
         {
-            cl.sql = "Select * From tblproduct";
-            cl.da = new MySqlDataAdapter(cl.sql, cl.cnn);
+            SQLCON.sql = "Select * From tblproduct";
+            SQLCON.da = new MySqlDataAdapter(SQLCON.sql, SQLCON.cnn);
             DataTable dt = new DataTable();
-            cl.da.Fill(dt);
+            SQLCON.da.Fill(dt);
             dgvProduct.DataSource = dt;
             dgvProduct.Columns[0].Visible = false;
             this.dgvProduct.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -128,15 +133,16 @@ namespace WindowsFormsApplication1
         {
             
             string sql1 = "Select * from tblcate";
-            cl.da = new MySqlDataAdapter(sql1, cl.cnn);
+            SQLCON.da = new MySqlDataAdapter(sql1, SQLCON.cnn);
             DataTable dt = new DataTable();
-            cl.da.Fill(dt);
+            SQLCON.da.Fill(dt);
             dgvCate.DataSource = dt;
             dgvCate.Columns[1].HeaderText = "កូដប្រភេទ";
             dgvCate.Columns[2].HeaderText = "ឈ្មោះប្រផេទទំនិញ";
             dgvCate.Columns[3].HeaderText = "បរិយាយប្រភេទទំនិញ";
             dgvCate.Columns[0].Visible = false ;
             this.dgvCate.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            
         }
 
         private void dash_FormClosing(object sender, FormClosingEventArgs e)
@@ -157,8 +163,8 @@ namespace WindowsFormsApplication1
         private void metroButton2_Click(object sender, EventArgs e)
         {
            
-            Class1.add = false;
-            Class1.update = true;
+            SQLCON.add = false;
+            SQLCON.update = true;
             frmCategory frmCate = new frmCategory();
             frmCate.ShowDialog();
         }
@@ -174,7 +180,7 @@ namespace WindowsFormsApplication1
             {
                 //gets a collection that contains all the rows
                 DataGridViewRow row = this.dgvCate.Rows[e.RowIndex];
-                Class1.id = row.Cells[1].Value.ToString();
+                SQLCON.id = row.Cells[1].Value.ToString();
                 //Class1.cateID = row.Cells[10].Value.ToString();
 
             }
@@ -187,16 +193,16 @@ namespace WindowsFormsApplication1
 
         private void metroButton3_Click(object sender, EventArgs e)
         {
-            cl.cnn.Open();
+            //SQLCON.openConn();
             if (dgvCate.SelectedCells.Count > 0)
 
             {
                 DialogResult result = MessageBox.Show("Do you want to Delete Category?", "Warning",MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
-                    cl.cmd = new MySqlCommand("Delete from tblcate Where cateID = @id",cl.cnn);
-                    cl.cmd.Parameters.AddWithValue("@id", Class1.id);
-                    int i = cl.cmd.ExecuteNonQuery();
+                    SQLCON.cmd = new MySqlCommand("Delete from tblcate Where cateID = @id",SQLCON.cnn);
+                    SQLCON.cmd.Parameters.AddWithValue("@id", SQLCON.id);
+                    int i = SQLCON.cmd.ExecuteNonQuery();
                     if (i > 0)
                     {
                         MessageBox.Show("Category Delete Success!");
@@ -214,23 +220,22 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("Please Select data to Delete");
             }
 
-            cl.cmd.Dispose();
-            cl.cnn.Close();
+            
 
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Class1.add = true;
-            Class1.update = false;
+            SQLCON.add = true;
+            SQLCON.update = false;
             frmProduct pro = new frmProduct();
             pro.ShowDialog();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            Class1.add = false;
-            Class1.update = true;
+            SQLCON.add = false;
+            SQLCON.update = true;
             frmProduct pro = new frmProduct();
             pro.ShowDialog();
         }
@@ -241,7 +246,7 @@ namespace WindowsFormsApplication1
             {
                 //gets a collection that contains all the rows
                 DataGridViewRow row = this.dgvProduct.Rows[e.RowIndex];
-                Class1.id = row.Cells[1].Value.ToString();
+                SQLCON.id = row.Cells[1].Value.ToString();
                 
 
 
@@ -252,14 +257,14 @@ namespace WindowsFormsApplication1
         {
             try
             {
-                cl.cnn.Open();
+                SQLCON.openConn();
                  DialogResult result = MessageBox.Show("Do you want to Delete Product?", "Warning",MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
-                    cl.sql = "Delete From tblproduct Where itemCode = @id";
-                    cl.cmd = new MySqlCommand(cl.sql,cl.cnn);
-                    cl.cmd.Parameters.AddWithValue("@id", Class1.id);
-                    int i = cl.cmd.ExecuteNonQuery();
+                    SQLCON.sql = "Delete From tblproduct Where itemCode = @id";
+                    SQLCON.cmd = new MySqlCommand(SQLCON.sql,SQLCON.cnn);
+                    SQLCON.cmd.Parameters.AddWithValue("@id", SQLCON.id);
+                    int i = SQLCON.cmd.ExecuteNonQuery();
                     if (i > 0)
                     {
                         MessageBox.Show("Product Delete Success!");
@@ -272,7 +277,7 @@ namespace WindowsFormsApplication1
 
                 MessageBox.Show(ex.Message);
             }
-            cl.cnn.Close();
+            SQLCON.cnn.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -309,13 +314,13 @@ namespace WindowsFormsApplication1
         {
             try
             {
-                cl.cnn.Open();
+               SQLCON.openConn();
                 int d;
                 for (d = 0; d <= 900; d++)
                 {
-                    cl.cmd = new MySqlCommand("Insert Into tblproduct (itemCode) Values(@d)", cl.cnn);
-                    cl.cmd.Parameters.AddWithValue("@d", d);
-                    cl.cmd.ExecuteNonQuery();
+                    SQLCON.cmd = new MySqlCommand("Insert Into tblproduct (itemCode) Values(@d)", SQLCON.cnn);
+                    SQLCON.cmd.Parameters.AddWithValue("@d", d);
+                    SQLCON.cmd.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
@@ -323,7 +328,7 @@ namespace WindowsFormsApplication1
 
                 MessageBox.Show(ex.Message);
             }
-            cl.cnn.Close();
+            
            
         }
 
@@ -337,57 +342,58 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                loadInvoiceNo();
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-        }
+     
 
         private void loadInvoiceNo()
         {
-            cl.openConn();
-            cl.cmd = new MySqlCommand("Select * from tblsaledetail Order by saleId Desc Limit 1", cl.cnn);
-            cl.da = new MySqlDataAdapter(cl.cmd);
-            cl.cmd.Parameters.AddWithValue(txtInvoiceNo.Text ,"@invoiceNo");
-            DataTable dt = new DataTable();
-            cl.da.Fill(dt);
-            if (dt.Rows.Count == 0)
+            SQLCON.openConn();
+            try
             {
-                txtInvoiceNo.Text = "000000001";
-            }
-            else
-            {
-                Class1.dr = cl.cmd.ExecuteReader();
-                while (Class1.dr.Read())
+                MySqlCommand cmd1 = new MySqlCommand("Select * from tblsaledetail Order by saleId Desc Limit 1", SQLCON.cnn);
+                SQLCON.da = new MySqlDataAdapter(cmd1);
+                //cmd1.Parameters.AddWithValue(txtInvoiceNo.Text ,"@invoiceNo");
+                DataTable dt = new DataTable();
+                SQLCON.da.Fill(dt);
+                if (dt.Rows.Count == 0)
                 {
-                    string inno = Class1.dr.GetString(1);
-                    int innoplus = Convert.ToInt32(inno) + 1;
-                    txtInvoiceNo.Text = innoplus.ToString("00000000");
+                    txtInvoiceNo.Text = "000000001";
+                }
+                else
+                {
+                    int inno = Convert.ToInt32(dt.Rows[0]["invoiceNo"]) + 1;
+                    txtInvoiceNo.Text = inno.ToString("00000000");
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
 
-            cl.cnn.Close();
+            }finally   
+           
+            {
+                SQLCON.cnn.Close(); 
+            }
+           
+
+                    
             
 
         }
 
         private void loadSaleitem()
         {
-            cl.openConn();
-            cl.sql = "Select * from tblsaledetail where invoiceNo = 00000006";
-            cl.cmd = new MySqlCommand(cl.sql,cl.cnn);
-            cl.da = new MySqlDataAdapter(cl.cmd);
-            //cl.cmd.Parameters.AddWithValue(txtInvoiceNo.Text, "@invoiceNo");
-            DataTable dt = new DataTable();
-            cl.da.Fill(dt);
-            dgvSale.DataSource = dt;
+           
+           DataTable dt = new DataTable();
+            SQLCON.cmd = new MySqlCommand("Select * from tblsaledetail where invoiceNo = @invoiceNo", SQLCON.cnn);
+            SQLCON.cmd.Parameters.AddWithValue( "@invoiceNo" , txtInvoiceNo.Text);
+            SQLCON.da = new MySqlDataAdapter(SQLCON.cmd);
+                      
+            SQLCON.da.Fill(dt);
+           // if (dt.Rows.Count > 0) {
+                dgvSale.DataSource = dt;
+            //}
+            
+            
             
         }
 
@@ -395,6 +401,7 @@ namespace WindowsFormsApplication1
         {
             try
             {
+                //SQLCON.cnn.Open();
                 loadSaleitem();
             }
             catch (Exception ex)
@@ -402,9 +409,381 @@ namespace WindowsFormsApplication1
 
                 MessageBox.Show(ex.Message);
             }
-            cl.cnn.Close();
+            finally {
+                SQLCON.cnn.Close(); 
+            }
+           
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            frmReportCrystal frmCrystal = new frmReportCrystal();
+            Form2 frmPrint = new Form2();
+           
+            frmPrint.Show();
+            frmCrystal.Show();
+
+
+        }
+
+        private void txtProducCode_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtProducCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           
+        }
+
+        private void txtProducCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // add invoice
+                    try
+                    {
+                        DataTable dt = new DataTable();
+                        SQLCON.openConn();
+                        //SQLCON.cnn.Open();
+
+                        SQLCON.cmd = new MySqlCommand("Select * from tblproduct where itemCode = @item",SQLCON.cnn);
+                        SQLCON.cmd.Parameters.AddWithValue("@item", txtProducCode.Text);
+                        SQLCON.da = new MySqlDataAdapter(SQLCON.cmd);
+                        
+
+                        SQLCON.da.Fill(dt);
+                        if (dt.Rows.Count > 0)
+                        {
+                            
+                                txtItemName.Text = Convert.ToString(dt.Rows[0]["itemName"]);
+                                txtItemCategory.Text = Convert.ToString(dt.Rows[0]["itemCategory"]);
+                                txtItemPrice.Text = Convert.ToString(dt.Rows[0]["itemPriceOut"]);
+                                txtQuantity.Focus();
+
+                        }
+
+                        
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+
+                    SQLCON.cnn.Close();
+
+
+
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void saleProducts()
+        {
+            try
+            {
+                SQLCON.openConn();
+                SQLCON.cmd = new MySqlCommand("Insert Into tblsaledetail (invoiceNo,itemCode,itemName,unitePrice,quantity,price)" +
+                    " Values (@invoiceNo,@item,@itemName,@unitePrice,@quantity,@price)", SQLCON.cnn);
+                var p = SQLCON.cmd;
+                p.Parameters.AddWithValue("@invoiceNo", txtInvoiceNo.Text);
+                p.Parameters.AddWithValue("@item", txtProducCode.Text);
+                p.Parameters.AddWithValue("@itemName", txtItemName.Text);
+                p.Parameters.AddWithValue(@"unitePrice", Convert.ToDouble(txtItemPrice.Text));
+                p.Parameters.AddWithValue("@quantity", txtQuantity.Text);
+                p.Parameters.AddWithValue("@price", Convert.ToDouble(txtItemPrice.Text) * Convert.ToDouble(txtQuantity.Text));
+                p.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                SQLCON.cnn.Close();
+                loadSaleitem();
+            }
+           
+            
+            SQLCON.cnn.Close();
+        }
+
+        private void btnSale_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                saleProducts();
+                txtProducCode.Focus();
+                clearText();
+            }
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void clearText()
+        {
+            txtProducCode.Text = "";
+            txtItemCategory.Text = "";
+            txtCustomerName.Text = "";
+            txtQuantity.Text = "";
+            txtItemPrice.Text = "";
+            txtItemName.Text = "";
+            
+            foreach (Control  t  in pProductInfo.Controls)
+            {
+                if (t is TextBox)
+                {
+                    t.Text = "";
+                }
+            }
+
+        }
+
+        private void saveInvoice_Print()
+        {
+            SQLCON.openConn();
+            if (txtRecieveDollar.Text != "" && txtRecieveDollar.Text == "")
+            {
+                MessageBox.Show("Can't Sale Products when not Recieve money yet !", "Recieve Money Requied");
+                return;
+            }
+            SQLCON.cmd = new MySqlCommand("Insert Into tbl_invoice (invoiceNo,saleBy,saleDate,total,cash,cash_D_R)" +
+                " Values (@invoiceNo,'Sopheak', sysdate(),@total,@cash,@cash_D_R)", SQLCON.cnn);
+            if (txtRecieveDollar.Text != "")
+            {
+                    SQLCON.cmd.Parameters.AddWithValue("@total",txtGrandTotalDollar.Text);
+                    SQLCON.cmd.Parameters.AddWithValue("@cash", txtRecieveDollar.Text);
+                    SQLCON.cmd.Parameters.AddWithValue("@cash_D_R", 0);
+            }
+            else if (txtRecieveReil.Text != "")
+            {
+                SQLCON.cmd.Parameters.AddWithValue("@total", txtGrandTotalRiel.Text);
+                SQLCON.cmd.Parameters.AddWithValue("@cash", txtRecieveReil.Text);
+                SQLCON.cmd.Parameters.AddWithValue("@cash_D_R", 1);
+            }
+            SQLCON.cmd.Parameters.AddWithValue("@invoiceNo", txtInvoiceNo.Text);
+            //SQLCON.cmd.ExecuteNonQuery();
+            int p = SQLCON.cmd.ExecuteNonQuery();
+            if (p > 0)
+            {
+                frmReportCrystal frmprint = new frmReportCrystal();
+
+                SQLCON.da = new MySqlDataAdapter("Select * from v_invoice where invoiceNo ='" + txtInvoiceNo.Text + "'", SQLCON.cnn);
+                DataTable dt = new DataTable();
+                SQLCON.da.Fill(SQLCON.dsa, "rptInvoice");              // rpt is the name of ttx File
+                SQLCON.reportName = "cryInvoice";                       // report name
+                frmprint.Show();
+            }
+
+            SQLCON.cnn.Close();
+        }
+
+        
+
+        private void dgvSale_ColumnAdded(object sender, DataGridViewColumnEventArgs e)
+        {
+            try
+            {
+                //if (dgvSale.Rows.Count > 0)
+                //{
+                    DataTable dt = new DataTable();
+
+                    //SQLCON.openConn();
+
+                    SQLCON.cmd = new MySqlCommand("Select sum(price) from tblsaledetail where invoiceNo = @invoiceNo", SQLCON.cnn);
+                    SQLCON.cmd.Parameters.AddWithValue("@invoiceNo", txtInvoiceNo.Text);
+                    SQLCON.da = new MySqlDataAdapter(SQLCON.cmd);
+                    SQLCON.da.Fill(dt);
+                    if (dt.Rows.Count > 0)
+                    {
+                        txtGrandTotalDollar.Text = Convert.ToString(dt.Rows[0][0]);
+                    }
+
+                    DataTable dtRate = new DataTable();
+                    SQLCON.cmd = new MySqlCommand("Select USD_RIEL from tblrate  order by id DESC Limit 1", SQLCON.cnn);
+                    SQLCON.da = new MySqlDataAdapter(SQLCON.cmd);
+                    SQLCON.da.Fill(dtRate);
+
+                    if (dtRate.Rows.Count > 0)
+                    {
+                        if (txtGrandTotalDollar.Text !="")
+                        {
+                            string riel = Convert.ToString(dtRate.Rows[0][0]);
+                            double rielD = Convert.ToDouble(riel) * Convert.ToDouble(txtGrandTotalDollar.Text);
+                            txtGrandTotalRiel.Text = rielD.ToString("##,###.00");
+                        }
+                        else
+                        {
+                            return;
+                        }
+                       
+                    }
+                }
+              
+            //}
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+
+            SQLCON.cnn.Close();
+           
+        }
+
+
+
+        private void btnPrintInvoice_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (txtRecieveReil.Text == "" && txtRecieveDollar.Text == "")
+                {
+                    MessageBox.Show("Please Input Recieved Money", "Input Recieved money");
+                    return;
+                }
+
+                else if (txtRecieveDollar.Text !="" && Convert.ToDouble(txtRecieveDollar.Text) < Convert.ToDouble(txtGrandTotalDollar.Text))
+                {
+                    MessageBox.Show("អត់គ្រប់លុយទេ !", "Input Recieved money");
+                    txtRecieveDollar.Focus();
+                    return;
+                }
+                else if (txtRecieveReil.Text !="" && Convert.ToDouble(txtGrandTotalRiel.Text) < Convert.ToDouble(txtRecieveReil.Text))
+                {
+                    MessageBox.Show("អត់គ្រប់លុយទេ !", "Input Recieved money");
+                    txtRecieveReil.Focus();
+                    return;
+                }
+               
+
+                
+               
+
+                saveInvoice_Print();
+
+                //-------------------Report with Crystal--------------------------
+               // DataSet dsa = new DataSet();
+                
+
+
+                
+
+                //--------------------End Report with Crystal-------------------------
+
+
+
+
+                btnNewSale.PerformClick();
+                txtGrandTotalDollar.Text = "";
+                txtGrandTotalRiel.Text = "";
+                txtRecieveDollar.Text = "";
+                txtRecieveReil.Text = "";
+                
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            //saveInvoice();
+        }
+
+
+
+        private void btnNewSale_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                loadInvoiceNo();
+                txtProducCode.Focus();
+            }
+            
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                SQLCON.cnn.Close();
+            }
+        }
+
+        private void txtGrandTotalDollar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+       (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtGrandTotalRiel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+       (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtRecieveDollar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+       (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtRecieveReil_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+       (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+       
        
     }
 

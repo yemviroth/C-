@@ -15,7 +15,7 @@ namespace WindowsFormsApplication1
     public partial class Form1 : Form
     {
         
-        //public MySqlConnection cl.cnn = new MySqlConnection("Server=192.168.0.8;Database=cc;Uid=root;Pwd=123;Encrypt=true;Character Set=utf8");
+        //public MySqlConnection SQLCON.cnn = new MySqlConnection("Server=192.168.0.8;Database=cc;Uid=root;Pwd=123;Encrypt=true;Character Set=utf8");
 
         public Form1()
 
@@ -23,14 +23,14 @@ namespace WindowsFormsApplication1
             InitializeComponent();
 
         }
-        public Class1 cl = new Class1();
+        public SQLCON cl = new SQLCON();
         private void Form1_Load(object sender, EventArgs e)
         {
 
             try
             {
                
-                cl.cnn.Open();
+                SQLCON.cnn.Open();
                 loaddata();
 
             }
@@ -45,7 +45,7 @@ namespace WindowsFormsApplication1
         private void loaddata()
         {
             //dataGridView1.Columns[1].Visible = false;
-            MySqlDataAdapter da = new MySqlDataAdapter("Select * from tblTest", cl.cnn);
+            MySqlDataAdapter da = new MySqlDataAdapter("Select * from tblTest", SQLCON.cnn);
             DataTable dt = new DataTable();
             da.Fill(dt);
             dataGridView1.DataSource = dt;
@@ -55,7 +55,7 @@ namespace WindowsFormsApplication1
         {
             
             string sql = "Insert Into tblTest (stName,age) Values(@name,@age)" ;
-            MySqlCommand cmd = new MySqlCommand(sql, cl.cnn);
+            MySqlCommand cmd = new MySqlCommand(sql, SQLCON.cnn);
             cmd.Parameters.AddWithValue("@name",txtName.Text );
             cmd.Parameters.AddWithValue("@age", txtAge.Text);
             cmd.ExecuteNonQuery();
@@ -101,7 +101,7 @@ namespace WindowsFormsApplication1
         private void button2_Click(object sender, EventArgs e)
         {
             
-            MySqlCommand cmd = new MySqlCommand("Update tblTest Set stName='"+txtName.Text+"',age='"+txtAge.Text+"' where ID='"+label1.Text+"'",cl.cnn);
+            MySqlCommand cmd = new MySqlCommand("Update tblTest Set stName='"+txtName.Text+"',age='"+txtAge.Text+"' where ID='"+label1.Text+"'",SQLCON.cnn);
             cmd.ExecuteNonQuery();
             loaddata();
 
@@ -116,7 +116,7 @@ namespace WindowsFormsApplication1
                     {
                         try
                         {
-                            MySqlCommand cmd = new MySqlCommand("Delete From tblTest where ID='" + label1.Text + "'", cl.cnn);
+                            MySqlCommand cmd = new MySqlCommand("Delete From tblTest where ID='" + label1.Text + "'", SQLCON.cnn);
                             cmd.ExecuteNonQuery();
                             loaddata();
                             MessageBox.Show("Delete Success !", "Delete");
@@ -137,7 +137,7 @@ namespace WindowsFormsApplication1
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-             MySqlDataAdapter da1 = new MySqlDataAdapter("Select * from tblTest Where stName Like'" + txtSearch.Text + "%'", cl.cnn);
+             MySqlDataAdapter da1 = new MySqlDataAdapter("Select * from tblTest Where stName Like'" + txtSearch.Text + "%'", SQLCON.cnn);
             DataTable dt1 = new DataTable();
             da1.Fill(dt1);
             dataGridView1.DataSource = dt1;

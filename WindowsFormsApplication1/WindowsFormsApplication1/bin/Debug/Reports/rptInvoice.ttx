@@ -1,0 +1,13 @@
+invoiceNo	String	50
+itemCode	String	50
+itemName	String	50
+unitePrice	Number	
+quantity	Number
+price		Number
+total		Number
+saleBy		String	100
+saleDate	Date	
+cash_D_R	Number
+cash		String	100
+cashReturn	String	100
+isPay	Number
