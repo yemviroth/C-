@@ -356,12 +356,12 @@ namespace WindowsFormsApplication1
                 SQLCON.da.Fill(dt);
                 if (dt.Rows.Count == 0)
                 {
-                    txtInvoiceNo.Text = "000000001";
+                    txtInvoiceNo.Text = "0001";
                 }
                 else
                 {
                     int inno = Convert.ToInt32(dt.Rows[0]["invoiceNo"]) + 1;
-                    txtInvoiceNo.Text = inno.ToString("00000000");
+                    txtInvoiceNo.Text = inno.ToString("0000");
                 }
             }
             catch (Exception ex)
@@ -553,41 +553,76 @@ namespace WindowsFormsApplication1
 
         private void saveInvoice_Print()
         {
-            SQLCON.openConn();
-            if (txtRecieveDollar.Text != "" && txtRecieveDollar.Text == "")
+            try
             {
-                MessageBox.Show("Can't Sale Products when not Recieve money yet !", "Recieve Money Requied");
+                SQLCON.openConn();
+                if (txtRecieveDollar.Text != "" && txtRecieveDollar.Text == "")
+                {
+                    MessageBox.Show("Can't Sale Products when not Recieve money yet !", "Recieve Money Requied");
+                    return;
+                }
+
+                //when cash reciev is Dollar
+
+                if (txtRecieveDollar.Text != "" && txtRecieveReil.Text == "")
+                {
+                    SQLCON.cmd = new MySqlCommand("Insert Into tbl_invoice(invoiceNo,saleBy,saleDate,totalDollar,totalRiel,cash_D_R_all,cashRecieveDollar,cashReturnDollar)" +
+                    " Values (@invoiceNo,'Sopheak',sysdate(),@totalDollar,@totalRiel,@cash_D_R_all,@cashRecieveDollar,@cashReturnDollar)", SQLCON.cnn);
+                    SQLCON.cmd.Parameters.AddWithValue("@invoiceNo", txtInvoiceNo.Text);
+                    SQLCON.cmd.Parameters.AddWithValue("@totalDollar", txtGrandTotalDollar.Text);
+                    SQLCON.cmd.Parameters.AddWithValue("@totalRiel", txtGrandTotalRiel.Text);
+                    SQLCON.cmd.Parameters.AddWithValue("@cash_D_R_all", 0);
+                    SQLCON.cmd.Parameters.AddWithValue("@cashRecieveDollar", txtRecieveDollar.Text);
+                    SQLCON.cmd.Parameters.AddWithValue("@cashReturnDollar", txtCashReturnDollar.Text);
+                    
+                    //SQLCON.cmd.Parameters.AddWithValue("@cash", txt.Text);
+                }
+                else if (txtRecieveReil.Text != "" && txtRecieveDollar.Text == "")
+                {
+                    // When cash reciev is Riel
+                    SQLCON.cmd = new MySqlCommand("Insert Into tbl_invoice (invoiceNo,saleBy,saleDate,totalDollar,totalRiel,cash_D_R_all,cashRecieveRiel,cashReturnRiel)" +
+                    " Values (@invoiceNo,'Sopheak', sysdate(),@totalRiel,@cashRecieveRiel,@cash_D_R_all)", SQLCON.cnn);
+                    SQLCON.cmd.Parameters.AddWithValue("@totalDollar", txtGrandTotalDollar.Text);
+                    SQLCON.cmd.Parameters.AddWithValue("@totalRiel", txtGrandTotalRiel.Text);
+                    SQLCON.cmd.Parameters.AddWithValue("@cashRecieveRiel", txtRecieveReil.Text);
+                    SQLCON.cmd.Parameters.AddWithValue("@cash_D_R_all", 1);
+                }
+
+
+                //SQLCON.cmd = new MySqlCommand("Insert Into tbl_invoice (invoiceNo,saleBy,saleDate,totalDollar,totalRiel,cash_D_R_all,cashRecieveDollar,cashRecieveRiel,cashReturnDollar,isPay)" +
+                // " Values (@invoiceNo,'Sopheak', sysdate(),@totalDollar,@cashRecieveDollar,@cash_D_R_all)", SQLCON.cnn);
+
+                //SQLCON.cmd.Parameters.AddWithValue("@invoiceNo", txtInvoiceNo.Text);
+                //SQLCON.cmd.ExecuteNonQuery();
+                int p = SQLCON.cmd.ExecuteNonQuery();
+                if (p > 0)
+                {
+                    SQLCON.cmd = new MySqlCommand("Select * from v_invoice where invoiceNo=@invoiceNoPrintINvoice", SQLCON.cnn);
+                    
+                    SQLCON.cmd.Parameters.AddWithValue("@invoiceNoPrintINvoice", txtInvoiceNo.Text);
+                    SQLCON.da = new MySqlDataAdapter(SQLCON.cmd);
+                    //DataTable dt = new DataTable();
+                    SQLCON.dsa.Clear();
+                    SQLCON.da.Fill(SQLCON.dsa, "rptInvoice");              // rpt is the name of ttx File
+                    
+                    SQLCON.reportName = "cryInvoice";                       // report name
+                    frmReportCrystal frmprint = new frmReportCrystal();
+                   
+                    frmprint.Show();
+                    
+                   
+                }
+
+                SQLCON.cnn.Close();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
                 return;
             }
-            SQLCON.cmd = new MySqlCommand("Insert Into tbl_invoice (invoiceNo,saleBy,saleDate,total,cash,cash_D_R)" +
-                " Values (@invoiceNo,'Sopheak', sysdate(),@total,@cash,@cash_D_R)", SQLCON.cnn);
-            if (txtRecieveDollar.Text != "")
-            {
-                    SQLCON.cmd.Parameters.AddWithValue("@total",txtGrandTotalDollar.Text);
-                    SQLCON.cmd.Parameters.AddWithValue("@cash", txtRecieveDollar.Text);
-                    SQLCON.cmd.Parameters.AddWithValue("@cash_D_R", 0);
-            }
-            else if (txtRecieveReil.Text != "")
-            {
-                SQLCON.cmd.Parameters.AddWithValue("@total", txtGrandTotalRiel.Text);
-                SQLCON.cmd.Parameters.AddWithValue("@cash", txtRecieveReil.Text);
-                SQLCON.cmd.Parameters.AddWithValue("@cash_D_R", 1);
-            }
-            SQLCON.cmd.Parameters.AddWithValue("@invoiceNo", txtInvoiceNo.Text);
-            //SQLCON.cmd.ExecuteNonQuery();
-            int p = SQLCON.cmd.ExecuteNonQuery();
-            if (p > 0)
-            {
-                frmReportCrystal frmprint = new frmReportCrystal();
-
-                SQLCON.da = new MySqlDataAdapter("Select * from v_invoice where invoiceNo ='" + txtInvoiceNo.Text + "'", SQLCON.cnn);
-                DataTable dt = new DataTable();
-                SQLCON.da.Fill(SQLCON.dsa, "rptInvoice");              // rpt is the name of ttx File
-                SQLCON.reportName = "cryInvoice";                       // report name
-                frmprint.Show();
-            }
-
-            SQLCON.cnn.Close();
+           
+            
         }
 
         
@@ -662,7 +697,7 @@ namespace WindowsFormsApplication1
                     txtRecieveDollar.Focus();
                     return;
                 }
-                else if (txtRecieveReil.Text !="" && Convert.ToDouble(txtGrandTotalRiel.Text) < Convert.ToDouble(txtRecieveReil.Text))
+                else if (txtRecieveReil.Text !="" && Convert.ToDouble(txtRecieveDollar.Text) < Convert.ToDouble(txtGrandTotalDollar.Text))
                 {
                     MessageBox.Show("អត់គ្រប់លុយទេ !", "Input Recieved money");
                     txtRecieveReil.Focus();
@@ -674,24 +709,21 @@ namespace WindowsFormsApplication1
                
 
                 saveInvoice_Print();
-
-                //-------------------Report with Crystal--------------------------
-               // DataSet dsa = new DataSet();
                 
-
-
-                
-
-                //--------------------End Report with Crystal-------------------------
-
-
-
-
                 btnNewSale.PerformClick();
-                txtGrandTotalDollar.Text = "";
-                txtGrandTotalRiel.Text = "";
-                txtRecieveDollar.Text = "";
-                txtRecieveReil.Text = "";
+
+                foreach (Control t in pProductCash.Controls)
+                {
+                    if (t is TextBox)
+                    {
+                        t.Text = "";
+                    }
+                }
+
+                //txtGrandTotalDollar.Text = "";
+                //txtGrandTotalRiel.Text = "";
+                //txtRecieveDollar.Text = "";
+                //txtRecieveReil.Text = "";
                 
             }
             catch (Exception ex)
@@ -699,6 +731,7 @@ namespace WindowsFormsApplication1
 
                 MessageBox.Show(ex.Message);
             }
+            
             //saveInvoice();
         }
 
@@ -783,8 +816,49 @@ namespace WindowsFormsApplication1
             }
         }
 
-       
-       
+        private void txtQuantity_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (txtQuantity.Text != "" && e.KeyCode == Keys.Enter)
+            {
+                txtCustomerName.Focus();
+            }
+        }
+
+        private void txtCustomerName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSale.Focus();
+            }
+        }
+
+        private void btnReprint_Click(object sender, EventArgs e)
+        {
+            frmReportCrystal frmprint = new frmReportCrystal();
+
+            SQLCON.da = new MySqlDataAdapter("Select * from v_invoice where invoiceNo ='" + txtInvoiceNo.Text + "'", SQLCON.cnn);
+            //DataTable dt = new DataTable();
+            SQLCON.dsa.Clear();
+            SQLCON.da.Fill(SQLCON.dsa, "rptInvoice");              //  name of ttx File
+            SQLCON.reportName = "cryInvoice";                       // report name
+            frmprint.Show();
+            
+
+        }
+
+        private void txtRecieveDollar_TextChanged(object sender, EventArgs e)
+        {
+            if (txtRecieveReil.Text == "" && txtRecieveDollar.Text !="")
+            {
+                double returnDollar;
+                returnDollar = Convert.ToDouble(txtRecieveDollar.Text) - Convert.ToDouble(txtGrandTotalDollar.Text);
+                txtCashReturnDollar.Text = returnDollar.ToString();
+            }
+            else
+            {
+                txtCashReturnDollar.Text = "";
+            }
+        }
     }
 
     

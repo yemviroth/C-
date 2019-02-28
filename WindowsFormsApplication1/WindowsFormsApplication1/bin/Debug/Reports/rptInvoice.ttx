@@ -4,10 +4,13 @@ itemName	String	50
 unitePrice	Number	
 quantity	Number
 price		Number
-total		Number
+totalDollar	Number
+totalRiel	Number
 saleBy		String	100
 saleDate	Date	
-cash_D_R	Number
-cash		String	100
-cashReturn	String	100
+cash_D_R_all	Number
+cashRecieveDollar	Number
+cashRecieveRiel	Number
+cashReturnDollar	Number
+cashReturnRiel	Number
 isPay	Number
