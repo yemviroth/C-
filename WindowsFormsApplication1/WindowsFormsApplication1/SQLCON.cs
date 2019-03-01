@@ -23,6 +23,8 @@ namespace WindowsFormsApplication1
         public static MySqlCommand cmd = new MySqlCommand();
         public static MySqlDataAdapter da = new MySqlDataAdapter();
         public static DataSet dsa = new DataSet();
+
+        public static string rielExchange;
         
         public static string sql="";
         public static bool add;

@@ -111,7 +111,7 @@ namespace WindowsFormsApplication1
         private void frmReportCrystal_Load(object sender, EventArgs e)
         {
             cl.crysReportView(SQLCON.reportName, SQLCON.dsa, crystalReportViewer1);
-            SQLCON.da.Dispose();
+            //SQLCON.da.Dispose();
         }
     }
 }

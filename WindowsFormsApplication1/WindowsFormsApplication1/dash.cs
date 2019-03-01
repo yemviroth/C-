@@ -346,7 +346,7 @@ namespace WindowsFormsApplication1
 
         private void loadInvoiceNo()
         {
-            SQLCON.openConn();
+            //SQLCON.openConn();
             try
             {
                 MySqlCommand cmd1 = new MySqlCommand("Select * from tblsaledetail Order by saleId Desc Limit 1", SQLCON.cnn);
@@ -384,14 +384,16 @@ namespace WindowsFormsApplication1
         {
            
            DataTable dt = new DataTable();
+            dt.Dispose();
             SQLCON.cmd = new MySqlCommand("Select * from tblsaledetail where invoiceNo = @invoiceNo", SQLCON.cnn);
             SQLCON.cmd.Parameters.AddWithValue( "@invoiceNo" , txtInvoiceNo.Text);
             SQLCON.da = new MySqlDataAdapter(SQLCON.cmd);
-                      
+            dgvSale.DataSource = "";
             SQLCON.da.Fill(dt);
-           // if (dt.Rows.Count > 0) {
+           if (dt.Rows.Count > 0) {
                 dgvSale.DataSource = dt;
-            //}
+           }
+            
             
             
             
@@ -566,15 +568,16 @@ namespace WindowsFormsApplication1
 
                 if (txtRecieveDollar.Text != "" && txtRecieveReil.Text == "")
                 {
-                    SQLCON.cmd = new MySqlCommand("Insert Into tbl_invoice(invoiceNo,saleBy,saleDate,totalDollar,totalRiel,cash_D_R_all,cashRecieveDollar,cashReturnDollar)" +
-                    " Values (@invoiceNo,'Sopheak',sysdate(),@totalDollar,@totalRiel,@cash_D_R_all,@cashRecieveDollar,@cashReturnDollar)", SQLCON.cnn);
+                    SQLCON.cmd = new MySqlCommand("Insert Into tbl_invoice(invoiceNo,saleBy,saleDate,totalDollar,totalRiel,cash_D_R_all,cashRecieveDollar,cashReturnDollar,cashReturnRiel)" +
+                    " Values (@invoiceNo,'Sopheak',sysdate(),ROUND(@totalDollar,2),ROUND(@totalRiel,2),@cash_D_R_all,@cashRecieveDollar,@cashReturnDollar,@cashReturnRiel)", SQLCON.cnn);
                     SQLCON.cmd.Parameters.AddWithValue("@invoiceNo", txtInvoiceNo.Text);
                     SQLCON.cmd.Parameters.AddWithValue("@totalDollar", txtGrandTotalDollar.Text);
                     SQLCON.cmd.Parameters.AddWithValue("@totalRiel", txtGrandTotalRiel.Text);
                     SQLCON.cmd.Parameters.AddWithValue("@cash_D_R_all", 0);
                     SQLCON.cmd.Parameters.AddWithValue("@cashRecieveDollar", txtRecieveDollar.Text);
                     SQLCON.cmd.Parameters.AddWithValue("@cashReturnDollar", txtCashReturnDollar.Text);
-                    
+                    SQLCON.cmd.Parameters.AddWithValue("@cashReturnRiel", txtCashReturnRiel.Text);
+
                     //SQLCON.cmd.Parameters.AddWithValue("@cash", txt.Text);
                 }
                 else if (txtRecieveReil.Text != "" && txtRecieveDollar.Text == "")
@@ -608,12 +611,21 @@ namespace WindowsFormsApplication1
                     SQLCON.reportName = "cryInvoice";                       // report name
                     frmReportCrystal frmprint = new frmReportCrystal();
                    
-                    frmprint.Show();
-                    
-                   
+                    frmprint.ShowDialog();
+                    btnNewSale.PerformClick();
+
+                    foreach (Control t in pProductCash.Controls)
+                    {
+                        if (t is TextBox)
+                        {
+                            t.Text = "";
+                        }
+                    }
+
+
                 }
 
-                SQLCON.cnn.Close();
+               // SQLCON.cnn.Close();
             }
             catch (Exception ex)
             {
@@ -643,7 +655,10 @@ namespace WindowsFormsApplication1
                     SQLCON.da.Fill(dt);
                     if (dt.Rows.Count > 0)
                     {
-                        txtGrandTotalDollar.Text = Convert.ToString(dt.Rows[0][0]);
+                        double dd = Convert.ToDouble(dt.Rows[0][0]);
+
+                        txtGrandTotalDollar.Text = dd.ToString("#0.00");
+                        //txtGrandTotalDollar.Text = dt.Rows[0][0].ToString("#,0.00");
                     }
 
                     DataTable dtRate = new DataTable();
@@ -655,9 +670,10 @@ namespace WindowsFormsApplication1
                     {
                         if (txtGrandTotalDollar.Text !="")
                         {
-                            string riel = Convert.ToString(dtRate.Rows[0][0]);
-                            double rielD = Convert.ToDouble(riel) * Convert.ToDouble(txtGrandTotalDollar.Text);
-                            txtGrandTotalRiel.Text = rielD.ToString("##,###.00");
+                            SQLCON.rielExchange = Convert.ToString(dtRate.Rows[0][0]);
+                            double dollarToRiel = Convert.ToDouble(SQLCON.rielExchange) * Convert.ToDouble(txtGrandTotalDollar.Text);
+                            txtGrandTotalRiel.Text = dollarToRiel.ToString("#0.00");
+                        
                         }
                         else
                         {
@@ -710,15 +726,7 @@ namespace WindowsFormsApplication1
 
                 saveInvoice_Print();
                 
-                btnNewSale.PerformClick();
-
-                foreach (Control t in pProductCash.Controls)
-                {
-                    if (t is TextBox)
-                    {
-                        t.Text = "";
-                    }
-                }
+                
 
                 //txtGrandTotalDollar.Text = "";
                 //txtGrandTotalRiel.Text = "";
@@ -853,11 +861,31 @@ namespace WindowsFormsApplication1
                 double returnDollar;
                 returnDollar = Convert.ToDouble(txtRecieveDollar.Text) - Convert.ToDouble(txtGrandTotalDollar.Text);
                 txtCashReturnDollar.Text = returnDollar.ToString();
+
+                double returnRiel;
+                returnRiel = Convert.ToDouble(returnDollar) * Convert.ToDouble(SQLCON.rielExchange);
+                txtCashReturnRiel.Text = returnRiel.ToString();
             }
             else
             {
                 txtCashReturnDollar.Text = "";
             }
+        }
+
+        private void dash_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 3)
+            {
+                if (e.KeyCode == Keys.F2)
+                {
+                    btnSale.PerformClick();
+                }
+                else if (e.KeyCode == Keys.F3)
+                {
+                    btnPrintInvoice.PerformClick();
+                }
+            }
+           
         }
     }
 
